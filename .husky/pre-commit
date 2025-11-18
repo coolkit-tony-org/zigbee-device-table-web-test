@@ -1,0 +1,2 @@
+vue-tsc -b
+pnpm lint:lint-staged
