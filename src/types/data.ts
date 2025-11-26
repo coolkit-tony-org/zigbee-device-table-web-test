@@ -47,7 +47,9 @@ export interface FlatRow {
     rowId: string;
     parentId: string;
     isGroupHead: boolean;
-    groupSpan: number;
+    deviceInfoGroupId: string;
+    deviceInfoGroupSize: number;
+    deviceInfoGroupIndex: number;
     deviceInfoRowSpan: number;
     searchText: string;
 

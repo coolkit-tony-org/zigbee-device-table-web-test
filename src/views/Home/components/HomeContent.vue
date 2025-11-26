@@ -6,10 +6,9 @@ import SearchInput from '@/components/SearchInput/Index.vue';
 import type { FilterValue } from 'ant-design-vue/es/table/interface';
 import type { FlatRow } from '@/types/data';
 import type { EnumFilters } from '@/workers/worker';
-import { type GroupKey } from '@/constants/columns';
 import { loadData, fetchDistinct, queryRows } from '@/services/dataClient';
 import VirtualTable from '@/components/VirtualTable/Index.vue';
-import { useColumns } from '@/hooks/useColumns';
+import { useColumns, type GroupKey } from '@/hooks/useColumns';
 
 const { tableColumns, enums, enumOptions, groupVisibility, createDefaultEnums } = useColumns();
 
@@ -26,36 +25,42 @@ const loading = ref(false);
 const error = ref<string | null>(null);
 const searchText = ref('');
 const pagination = reactive({
+    current: 1,
+    pageSize: 10,
     showQuickJumper: true,
     showSizeChanger: true,
     total: total.value,
-    showTotal: (t: number) => `共 ${t} 条（缺）`,
+    showTotal: (t: number) => `共 ${t} 条`,
 });
 const rowKey = (row: FlatRow) => row.rowId;
 
-// 避免响应式代理传入 worker 造成结构化克隆失败
+// 避免响应式代理传给 worker 造成结构化克隆失败
 const cloneForWorker = <T>(value: T): T => structuredClone(toRaw(value));
 
 // 查询走 worker，支持搜索 + 筛选；debounce 在输入时触发
-const runQuery = async (totalNeed = false) => {
+const runQuery = async (resetPage = false) => {
+    if (resetPage) {
+        pagination.current = 1;
+    }
     loading.value = true;
     error.value = null;
     try {
         const res = await queryRows({
             q: searchText.value,
             enums: cloneForWorker(enums.value),
+            page: pagination.current ?? 1,
+            pageSize: pagination.pageSize ?? 10,
         });
         rows.value = res.rows;
-        if (totalNeed) {
-            total.value = res.total;
-        }
+        total.value = res.total;
+        pagination.total = res.total;
     } catch (e: any) {
         error.value = e?.message ?? String(e);
     } finally {
         loading.value = false;
     }
 };
-const debouncedQuery = useDebounceFn(runQuery, 200);
+const debouncedQuery = useDebounceFn(() => runQuery(true), 200);
 
 onMounted(async () => {
     loading.value = true;
@@ -113,9 +118,15 @@ function applyEnumFiltersFromTable(filters: Record<string, FilterValue | null | 
     return changed;
 }
 
-const handleTableChange = (_pagination: unknown, filters: Record<string, FilterValue | null>) => {
+const handleTableChange = (pager: any, filters: Record<string, FilterValue | null>) => {
+    pagination.current = pager?.current ?? pagination.current ?? 1;
+    pagination.pageSize = pager?.pageSize ?? pagination.pageSize ?? 10;
+
     const changed = applyEnumFiltersFromTable(filters);
-    if (changed) runQuery();
+    if (changed) {
+        pagination.current = 1;
+    }
+    runQuery(false);
 };
 </script>
 
@@ -126,10 +137,10 @@ const handleTableChange = (_pagination: unknown, filters: Record<string, FilterV
                 <CheckboxGroup v-model:value="groupVisibility" name="checkboxgroup" :options="groupOptions" />
             </div>
             <div class="toolbar-search">
-                <SearchInput v-model:value="searchText" placeholder="请输入关键字进行搜索（缺）" style="width: 360px" allow-clear @input="debouncedQuery()" />
+                <SearchInput v-model:value="searchText" placeholder="请输入关键字进行搜索" style="width: 360px" allow-clear @input="debouncedQuery()" />
                 <span class="status-pill">
                     <span class="status-dot" />
-                    <span class="status-count">共 {{ total }} 条（缺）</span>
+                    <span class="status-count">共 {{ total }} 条</span>
                 </span>
             </div>
         </div>

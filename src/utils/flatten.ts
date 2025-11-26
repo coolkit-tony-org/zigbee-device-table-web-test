@@ -24,7 +24,7 @@ export function flattenDevice(device: RawDevice, index: number): FlatRow[] {
 
     const matterDevices = matterSupported && device.matterBridge?.devices?.length ? device.matterBridge.devices! : [null];
 
-    const span = matterDevices.length || 1;
+    if (matterDevices.length > 1) console.log('device.deviceInfo.model', device.deviceInfo.model);
 
     return matterDevices.map((matterDev: MatterDevice | null, idx) => {
         const thirdParty = matterDev?.thirdPartyAppSupport ?? [];
@@ -60,8 +60,10 @@ export function flattenDevice(device: RawDevice, index: number): FlatRow[] {
             rowId: `${parentId}-${idx}`,
             parentId,
             isGroupHead: idx === 0,
-            groupSpan: idx === 0 ? span : 0,
-            deviceInfoRowSpan: 1,
+            deviceInfoGroupId: parentId,
+            deviceInfoGroupSize: matterDevices.length,
+            deviceInfoGroupIndex: idx,
+            deviceInfoRowSpan: idx === 0 ? matterDevices.length : 0,
             searchText,
             deviceModel: device.deviceInfo.model,
             deviceType: device.deviceInfo.type,

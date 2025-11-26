@@ -113,9 +113,9 @@ const booleanColumnMap: Record<string, keyof EnumFilters> = {
     homeAssistantSupported: 'homeAssistantSupported',
 };
 
-type SpanStrategy = 'group' | 'deviceInfo' | false;
+type SpanStrategy = 'deviceInfo' | false;
 
-const createColumn = (key: keyof FlatRow | string, title: string, options: Partial<ColumnType<FlatRow>> = {}, span: SpanStrategy = 'group'): ColumnType<FlatRow> => ({
+const createColumn = (key: keyof FlatRow | string, title: string, options: Partial<ColumnType<FlatRow>> = {}, span: SpanStrategy = false): ColumnType<FlatRow> => ({
     key,
     dataIndex: key as ColumnType<FlatRow>['dataIndex'],
     title: () => {
@@ -135,14 +135,14 @@ const createColumn = (key: keyof FlatRow | string, title: string, options: Parti
         span === false
             ? undefined
             : (record: FlatRow) => ({
-                rowSpan: span === 'deviceInfo' ? record.deviceInfoRowSpan ?? 1 : record.isGroupHead ? record.groupSpan : 0,
+                rowSpan: record.deviceInfoRowSpan ?? 1,
             }),
     ...options,
 });
 
 const deviceInfoColumns: ColumnsType<FlatRow> = [
     createColumn('deviceModel', 'Model', { width: 160, fixed: true, customRender: ({ record }) => record.deviceModel || '--' }, 'deviceInfo'),
-    createColumn('deviceType', 'Type', { width: 130, customRender: ({ record }) => record.deviceType || '--' }),
+    createColumn('deviceType', 'Type', { width: 130, customRender: ({ record }) => record.deviceType || '--' }, 'deviceInfo'),
     createColumn('deviceBrand', 'Brand', { width: 130, customRender: ({ record }) => record.deviceBrand || '--' }, 'deviceInfo'),
     createColumn('deviceCategory', 'Category', { width: 130, customRender: ({ record }) => record.deviceCategory || '--' }, 'deviceInfo'),
 ];
@@ -151,7 +151,7 @@ const ewelinkColumns: ColumnsType<FlatRow> = [
     createColumn('ewelinkSupported', 'Sync to eWeLink', {
         width: 166,
         customRender: ({ record }) => boolIcon(record.ewelinkSupported),
-    }),
+    }, 'deviceInfo'),
     createColumn(
         'ewelinkCapabilities',
         'Capabilities of eWeLink',

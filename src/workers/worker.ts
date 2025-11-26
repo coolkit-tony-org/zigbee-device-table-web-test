@@ -3,7 +3,7 @@ import { expose } from 'comlink';
 import Fuse from 'fuse.js';
 import { flattenDevice } from '../utils/flatten';
 import type { RawData, FlatRow } from '../types/data';
-import { prepareRowsForDeviceInfoMerge } from '../utils/deviceInfoGrouping';
+import { sortByDeviceInfoGroup } from '../utils/deviceInfoGrouping';
 
 /** 每个列的筛选值 */
 export interface EnumFilters {
@@ -52,12 +52,32 @@ export interface QueryInput {
     q?: string;
     enums?: EnumFilters;
     sort?: SortSpec[];
+    page?: number;
+    pageSize?: number;
 }
 
 const SEARCH_KEYS = ['searchText'] as const;
 
 let rows: FlatRow[] = [];
 let fuse: Fuse<FlatRow> | null = null;
+
+const applyRowSpanForPage = (pageRows: FlatRow[]): FlatRow[] => {
+    const cloned = pageRows.map((row) => ({ ...row }));
+    let cursor = 0;
+    while (cursor < cloned.length) {
+        const head = cloned[cursor]!;
+        let span = 1;
+        while (cursor + span < cloned.length && cloned[cursor + span]!.deviceInfoGroupId === head.deviceInfoGroupId) {
+            span += 1;
+        }
+        head.deviceInfoRowSpan = span;
+        for (let offset = 1; offset < span; offset += 1) {
+            cloned[cursor + offset]!.deviceInfoRowSpan = 0;
+        }
+        cursor += span;
+    }
+    return cloned;
+};
 
 function buildFuse() {
     const fuseKeys = SEARCH_KEYS.map((key) => ({
@@ -133,7 +153,7 @@ const api = {
     },
 
     async query(input: QueryInput): Promise<{ rows: FlatRow[]; total: number }> {
-        const { q, enums, sort } = input || {};
+        const { q, enums, sort, page = 1, pageSize = 10 } = input || {};
         let base: FlatRow[];
         if (q && q.trim()) {
             const qStr = q.trim().toLowerCase();
@@ -149,9 +169,17 @@ const api = {
             base = rows;
         }
         const filtered = base.filter((r) => passEnums(r, enums));
-        const sorted = sortRows(filtered, sort);
-        const rowsWithSpan = prepareRowsForDeviceInfoMerge(sorted, Boolean(sort?.length));
-        return { rows: rowsWithSpan, total: rowsWithSpan.length };
+        const sorted = sort && sort.length ? sortRows(filtered, sort) : sortByDeviceInfoGroup(filtered);
+
+        const total = sorted.length;
+        const effectivePageSize = pageSize > 0 ? pageSize : 10;
+        const maxPage = Math.max(1, Math.ceil(total / effectivePageSize));
+        const currentPage = Math.min(Math.max(1, page), maxPage);
+        const start = (currentPage - 1) * effectivePageSize;
+        const slice = sorted.slice(start, start + effectivePageSize);
+        const pageRows = applyRowSpanForPage(slice);
+
+        return { rows: pageRows, total };
     },
 
     async distinct(): Promise<EnumOptionMap> {
