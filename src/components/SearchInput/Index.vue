@@ -19,12 +19,14 @@ const attrs = useAttrs();
 .search-input {
     display: flex;
     align-items: center;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.06);
+    border-radius: 8px;
 
     .input {
         border-radius: 8px;
-        border: 1px solid #d9d9d9;
         font-size: 14px;
-        height: 40px;
+        height: 32px;
+        border: none;
     }
 
     .img {

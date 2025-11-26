@@ -1,6 +1,5 @@
 <template>
     <div class="home-page">
-        <div class="header-wrapper">Zigbee Bridge-U 设备支持清单</div>
         <div class="content-wrapper">
             <HomeContent />
         </div>
@@ -22,7 +21,7 @@ import HomeContent from './components/HomeContent.vue';
         font-size: 32px;
         color: #424242;
         text-align: center;
-        padding: 56px 0 24px;
+        padding: 24px 0 0px;
     }
 
     .content-wrapper {

@@ -67,23 +67,22 @@ const createColumn = (key: keyof FlatRow | string, title: string, options: Parti
 });
 
 const deviceInfoColumns: ColumnsType<FlatRow> = [
-    createColumn('deviceModel', '设备型号', { width: 180, fixed: 'left' }, 'deviceInfo'),
-    createColumn('deviceType', '设备类型', { width: 140, fixed: 'left' }),
-    createColumn('deviceBrand', '品牌', { width: 140, fixed: 'left' }, 'deviceInfo'),
-    createColumn('deviceCategory', '设备类别', { width: 160, fixed: 'left' }, 'deviceInfo'),
+    createColumn('deviceModel', 'Model', { width: 160, fixed: true, customRender: ({ record }) => record.deviceModel || '--' }, 'deviceInfo'),
+    createColumn('deviceType', 'Type', { width: 130, customRender: ({ record }) => record.deviceType || '--' }),
+    createColumn('deviceBrand', 'Brand', { width: 130, customRender: ({ record }) => record.deviceBrand || '--' }, 'deviceInfo'),
+    createColumn('deviceCategory', 'Category', { width: 130, customRender: ({ record }) => record.deviceCategory || '--' }, 'deviceInfo'),
 ];
 
 const ewelinkColumns: ColumnsType<FlatRow> = [
-    createColumn('ewelinkSupported', '是否支持易微联云', {
-        width: 220,
-        align: 'center',
+    createColumn('ewelinkSupported', 'Sync to eWeLink', {
+        width: 166,
         customRender: ({ record }) => boolIcon(record.ewelinkSupported),
     }),
     createColumn(
         'ewelinkCapabilities',
-        '连接易微联云支持的能力',
+        'Capabilities of eWeLink',
         {
-            width: 300,
+            width: 280,
             customRender: ({ record }) => ewelinkCapabilitiesTransform(record.ewelinkCapabilities),
         },
         'deviceInfo'
@@ -91,27 +90,26 @@ const ewelinkColumns: ColumnsType<FlatRow> = [
 ];
 
 const matterColumns: ColumnsType<FlatRow> = [
-    createColumn('matterSupported', 'Matter Bridge 是否支持', {
-        width: 220,
-        align: 'center',
+    createColumn('matterSupported', 'Sync to Matter', {
+        width: 166,
         customRender: ({ record }) => boolIcon(record.matterSupported),
     }),
-    createColumn('matterDeviceType', 'Matter Device Type', { width: 220 }, false),
+    createColumn('matterDeviceType', 'Matter Device Type', { width: 195 }, false),
     createColumn(
-        'matterSupportedClusters',
+        'Matter Cluster',
         'Cluster',
         {
-            width: 260,
+            width: 349,
             customRender: ({ record }) => stringifyClusterInfo(record.matterSupportedClusters, record.matterUnsupportedClusters),
         },
         false
     ),
-    createColumn('matterProtocolVersion', 'Matter 支持的协议版本', { width: 260 }, false),
+    createColumn('matterProtocolVersion', 'Matter Version', { width: 150 }, false),
     createColumn(
         'appleSupported',
         'Apple Home',
         {
-            width: 220,
+            width: 260,
             customRender: ({ record }) => withNotes(record.appleSupported, record.appleNotes),
         },
         false
@@ -120,17 +118,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'googleSupported',
         'Google Home',
         {
-            width: 220,
+            width: 260,
             customRender: ({ record }) => withNotes(record.googleSupported, record.googleNotes),
-        },
-        false
-    ),
-    createColumn(
-        'alexaSupported',
-        'Alexa',
-        {
-            width: 220,
-            customRender: ({ record }) => withNotes(record.alexaSupported, record.alexaNotes),
         },
         false
     ),
@@ -138,17 +127,25 @@ const matterColumns: ColumnsType<FlatRow> = [
         'smartThingsSupported',
         'SmartThings',
         {
-            width: 220,
+            width: 260,
             customRender: ({ record }) => withNotes(record.smartThingsSupported, record.smartThingsNotes),
+        },
+        false
+    ),
+    createColumn(
+        'alexaSupported',
+        'Alexa',
+        {
+            width: 260,
+            customRender: ({ record }) => withNotes(record.alexaSupported, record.alexaNotes),
         },
         false
     ),
 ];
 
 const homeAssistantColumns: ColumnsType<FlatRow> = [
-    createColumn('homeAssistantSupported', '是否支持同步到 HA', {
-        width: 200,
-        align: 'center',
+    createColumn('homeAssistantSupported', 'Sync to HA', {
+        width: 166,
         customRender: ({ record }) => boolIcon(record.homeAssistantSupported),
     }),
     createColumn('homeAssistantEntities', 'entities', {
@@ -177,12 +174,12 @@ type ColumnWithGroup = ColumnType<FlatRow> & { groupKey?: GroupKey };
 
 export const baseColumns: ColumnsType<FlatRow> = [
     {
-        title: '设备信息',
+        title: 'Device information',
         key: 'group-device',
         children: deviceInfoColumns,
     },
     {
-        title: '易微联云',
+        title: 'eWeLink(缺)',
         key: 'group-ewelink',
         groupKey: 'ewelink',
         children: ewelinkColumns as ColumnsType<FlatRow>,

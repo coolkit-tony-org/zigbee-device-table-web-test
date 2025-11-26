@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, toRaw, h } from 'vue';
+import { ref, computed, onMounted, toRaw, h, reactive } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
-import { Input, Button, Spin, Checkbox, CheckboxGroup } from 'ant-design-vue';
+import { Input, Button, Checkbox, CheckboxGroup } from 'ant-design-vue';
 import SearchInput from '@/components/SearchInput/Index.vue';
 import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table';
 import type { FilterDropdownProps, FilterValue } from 'ant-design-vue/es/table/interface';
@@ -16,8 +16,8 @@ const MAX_FILTER_OPTIONS = 80;
 
 // 表头模块开关（大分组显隐），与列定义中的 groupKey 对应
 const groupOptions: { label: string; value: GroupKey }[] = [
-    { value: 'ewelink', label: '易微联云' },
-    { value: 'matter', label: 'Matter Bridge' },
+    { value: 'ewelink', label: 'eWeLink' },
+    { value: 'matter', label: 'Matter' },
     { value: 'homeAssistant', label: 'Home Assistant' },
 ];
 
@@ -26,6 +26,12 @@ const total = ref(0);
 const loading = ref(false);
 const error = ref<string | null>(null);
 const searchText = ref('');
+const pagination = reactive({
+    showQuickJumper: true,
+    showSizeChanger: true,
+    total: total.value,
+    showTotal: (t: number) => `共 ${t} 条`,
+});
 
 // 枚举筛选的默认空值；每次重置或 worker 返回 filters 时使用
 const createDefaultEnums = (): EnumFilters => ({
@@ -183,7 +189,7 @@ const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropd
             h(Input, {
                 size: 'small',
                 allowClear: true,
-                placeholder: '搜索选项',
+                placeholder: '搜索选项（缺）',
                 value: search,
                 'onUpdate:value': (val: string) => {
                     enumFilterSearch.value = { ...enumFilterSearch.value, [enumKey]: val };
@@ -208,7 +214,7 @@ const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropd
                             indeterminate: isAllIndeterminate,
                             onChange: (e: any) => toggleAll(e.target.checked),
                         }),
-                        h('span', { class: 'filter-menu-text' }, '全部'),
+                        h('span', { class: 'filter-menu-text' }, 'All'),
                     ]
                 ),
                 options.length
@@ -242,7 +248,7 @@ const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropd
                         size: 'small',
                         onClick: () => increaseEnumFilterLimit(enumKey),
                     },
-                    () => `显示更多 (${Math.min(limit, total)}/${total})`
+                    () => `See More（缺） (${Math.min(limit, total)}/${total})`
                 )
             )
             : null,
@@ -254,7 +260,7 @@ const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropd
                     type: 'link',
                     onClick: clear,
                 },
-                () => '清除'
+                () => 'Reset（缺）'
             ),
             h(
                 Button,
@@ -263,7 +269,7 @@ const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropd
                     size: 'small',
                     onClick: () => props.confirm?.(),
                 },
-                () => '确定'
+                () => 'Confirm（缺）'
             ),
         ]),
     ]);
@@ -341,42 +347,53 @@ const handleTableChange = (_pagination: unknown, filters: Record<string, FilterV
     <section class="page-section">
         <div class="toolbar">
             <div class="toolbar-filter">
-                <span class="toolbar-filter_title">可查看：</span>
                 <CheckboxGroup v-model:value="groupVisibility" name="checkboxgroup" :options="groupOptions" />
             </div>
             <div class="toolbar-search">
-                <SearchInput v-model:value="searchText" placeholder="请输入关键字进行搜索" style="width: 360px" allow-clear @input="debouncedQuery()" />
+                <SearchInput v-model:value="searchText" placeholder="请输入关键字进行搜索（缺）" style="width: 360px" allow-clear @input="debouncedQuery()" />
+                <span class="status-pill">
+                    <span class="status-dot" />
+                    <span class="status-count">共 {{ total }} 条（缺）</span>
+                </span>
             </div>
         </div>
 
         <div class="data-table-shell">
-            <div v-if="loading" class="tbl-loading">
-                <Spin />
-            </div>
-            <div v-else class="data-table-body">
-                <VirtualTable :columns="tableColumns" :dataSource="rows" :rowKey="rowKey" size="small" bordered @change="handleTableChange" />
+            <div class="data-table-body">
+                <VirtualTable
+                    :columns="tableColumns"
+                    :dataSource="rows"
+                    :rowKey="rowKey"
+                    size="small"
+                    bordered
+                    @change="handleTableChange"
+                    :pagination="pagination"
+                    :loading="loading"
+                />
             </div>
         </div>
+        <div v-if="!rows.length || loading" class="table-footer-placeholder" style="height:48px; flex-shrink: 0;"/>
     </section>
 </template>
 
 <style scoped lang="scss">
 .page-section {
     height: 100%;
-    padding: 16px 40px 56px;
+    padding: 24px 40px 24px;
     display: flex;
     flex-direction: column;
     transition: background 0.4s ease;
 }
 
 .toolbar {
-    width: 100%;
     margin-bottom: 20px;
     padding: 14px 18px;
     border-radius: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px 12px 12px 12px;
     gap: 16px;
 
     .toolbar-filter {
@@ -384,6 +401,10 @@ const handleTableChange = (_pagination: unknown, filters: Record<string, FilterV
             font-size: 14px;
             font-weight: 500;
         }
+    }
+
+    .toolbar-search {
+        display: flex;
     }
 
     :deep(.ant-select),
@@ -397,15 +418,13 @@ const handleTableChange = (_pagination: unknown, filters: Record<string, FilterV
 }
 
 .data-table-shell {
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.95);
     overflow: hidden;
-    box-shadow: 0 15px 45px rgba(15, 23, 42, 0.12);
-    animation: fade-up 0.5s ease;
     flex: 1;
     min-height: 0;
     display: flex;
     flex-direction: column;
+    max-height: 900px;
+    min-height: 300px;
 }
 
 .data-table-header {
@@ -426,7 +445,6 @@ const handleTableChange = (_pagination: unknown, filters: Record<string, FilterV
 .data-table-body {
     position: relative;
     overflow: auto;
-    background: #fff;
     flex: 1;
     min-height: 0;
 }
@@ -516,37 +534,25 @@ const handleTableChange = (_pagination: unknown, filters: Record<string, FilterV
     margin: 6px 0;
 }
 
-.toolbar-stats {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+.status-pill {
+    margin-left: 16px;
     font-size: 13px;
     color: #6b7280;
     white-space: nowrap;
-}
-
-.status-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
     border-radius: 999px;
-    background: rgba(59, 130, 246, 0.12);
     color: #1d4ed8;
-    font-weight: 600;
-    box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.2);
+    border: 1px solid #1d4ed8;
     backdrop-filter: blur(4px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.status-pill:hover {
-    transform: translateY(-1px);
-    box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.3), 0 6px 12px rgba(59, 130, 246, 0.2);
-}
-
 .status-dot {
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
     border-radius: 999px;
     background: #2563eb;
     box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
