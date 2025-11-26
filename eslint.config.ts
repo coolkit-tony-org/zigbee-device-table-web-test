@@ -108,9 +108,9 @@ export default [
             // ignoreRestSiblings: true：当你解构时丢掉某个字段但又把剩余的展开成 ...rest，别再对那个被丢掉的字段报“未使用”错误。
             '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
             // 每个函数的最大行数
-            'max-lines-per-function': ['warn', 100],
+            'max-lines-per-function': ['warn', 200],
             // 每个文件的最大行数
-            'max-lines': ['warn', { max: 400, skipBlankLines: true, skipComments: true }],
+            'max-lines': ['warn', { max: 700, skipBlankLines: true, skipComments: true }],
 
             // 组件名称为多个单词，防止与现有和将来的 HTML 元素发生冲突，因为所有 HTML 元素都是单个单词
             'vue/multi-word-component-names': ['warn'],

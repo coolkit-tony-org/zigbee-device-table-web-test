@@ -155,6 +155,8 @@ onBeforeUnmount(() => {
     width: 100%;
     height: calc(100% - v-bind(TABLE_HEADER_HEIGHT));
     border-radius: 16px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     left: 0;
     display: flex;
     bottom: 0;

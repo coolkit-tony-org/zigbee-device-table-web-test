@@ -198,17 +198,6 @@ export const baseColumns: ColumnsType<FlatRow> = [
     } as ColumnWithGroup,
 ];
 
-const collectLeafColumns = (cols: ColumnsType<FlatRow>, bucket: ColumnType<FlatRow>[] = []) => {
-    cols.forEach((col) => {
-        if ('children' in col && col.children) {
-            collectLeafColumns(col.children, bucket);
-        } else {
-            bucket.push(col as ColumnType<FlatRow>);
-        }
-    });
-    return bucket;
-};
-
 export const filterColumnsByGroup = (cols: ColumnsType<FlatRow>, visibleGroups: GroupKey[]): ColumnsType<FlatRow> => {
     const result: ColumnsType<FlatRow> = [];
     cols.forEach((col) => {
@@ -223,11 +212,3 @@ export const filterColumnsByGroup = (cols: ColumnsType<FlatRow>, visibleGroups: 
     });
     return result;
 };
-
-export const sumColumnWidth = (cols: ColumnsType<FlatRow>): number =>
-    collectLeafColumns(cols).reduce((acc, col) => {
-        if (!col.width) return acc + 160;
-        if (typeof col.width === 'number') return acc + col.width;
-        const parsed = parseInt(col.width, 10);
-        return acc + (Number.isNaN(parsed) ? 160 : parsed);
-    }, 0);

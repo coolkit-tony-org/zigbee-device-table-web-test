@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, toRaw, h, reactive } from 'vue';
+import { ref, onMounted, toRaw, reactive } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
-import { Input, Button, Checkbox, CheckboxGroup } from 'ant-design-vue';
+import { CheckboxGroup } from 'ant-design-vue';
 import SearchInput from '@/components/SearchInput/Index.vue';
-import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table';
-import type { FilterDropdownProps, FilterValue } from 'ant-design-vue/es/table/interface';
+import type { FilterValue } from 'ant-design-vue/es/table/interface';
 import type { FlatRow } from '@/types/data';
-import type { EnumFilters, EnumOptionMap } from '@/workers/worker';
-import { baseColumns, filterColumnsByGroup, type GroupKey } from '@/constants/columns';
+import type { EnumFilters } from '@/workers/worker';
+import { type GroupKey } from '@/constants/columns';
 import { loadData, fetchDistinct, queryRows } from '@/services/dataClient';
 import VirtualTable from '@/components/VirtualTable/Index.vue';
+import { useColumns } from '@/hooks/useColumns';
 
-// 筛选项的显示数量限制，每次显示更多也依照该增量展开，保持体验一致
-const MAX_FILTER_OPTIONS = 80;
+const { tableColumns, enums, enumOptions, groupVisibility, createDefaultEnums } = useColumns();
 
 // 表头模块开关（大分组显隐），与列定义中的 groupKey 对应
 const groupOptions: { label: string; value: GroupKey }[] = [
@@ -30,66 +29,15 @@ const pagination = reactive({
     showQuickJumper: true,
     showSizeChanger: true,
     total: total.value,
-    showTotal: (t: number) => `共 ${t} 条`,
+    showTotal: (t: number) => `共 ${t} 条（缺）`,
 });
-
-// 枚举筛选的默认空值；每次重置或 worker 返回 filters 时使用
-const createDefaultEnums = (): EnumFilters => ({
-    deviceModel: [],
-    deviceType: [],
-    brand: [],
-    category: [],
-    ewelinkSupported: [],
-    ewelinkCapabilities: [],
-    matterSupported: [],
-    matterDeviceType: [],
-    matterProtocolVersion: [],
-    matterSupportedClusters: [],
-    homeAssistantSupported: [],
-    homeAssistantEntities: [],
-});
-
-const enums = ref<EnumFilters>(createDefaultEnums());
-const enumOptions = ref<EnumOptionMap>({
-    deviceModel: [],
-    deviceType: [],
-    brand: [],
-    category: [],
-    ewelinkSupported: [],
-    ewelinkCapabilities: [],
-    matterSupported: [],
-    matterDeviceType: [],
-    matterProtocolVersion: [],
-    matterSupportedClusters: [],
-    homeAssistantSupported: [],
-    homeAssistantEntities: [],
-});
-
-/** 三个组别的可视值 */
-const groupVisibility = ref<GroupKey[]>(['ewelink', 'matter', 'homeAssistant']);
-
-/**  */
-const enumFilterSearch = ref<Partial<Record<keyof EnumFilters, string>>>({});
-// 各列当前展开的筛选项数量；用于“显示更多”
-const enumFilterLimit = ref<Partial<Record<keyof EnumFilters, number>>>({});
-
-const getEnumFilterLimit = (key: keyof EnumFilters) => enumFilterLimit.value[key] ?? MAX_FILTER_OPTIONS;
-const setEnumFilterLimit = (key: keyof EnumFilters, value: number) => {
-    enumFilterLimit.value = { ...enumFilterLimit.value, [key]: value };
-};
-const resetEnumFilterLimit = (key: keyof EnumFilters) => setEnumFilterLimit(key, MAX_FILTER_OPTIONS);
-const increaseEnumFilterLimit = (key: keyof EnumFilters) => setEnumFilterLimit(key, getEnumFilterLimit(key) + MAX_FILTER_OPTIONS);
-
-/** 根据模块开关过滤列分组，再在末端附加筛选设置 */
-const filteredColumns = computed(() => filterColumnsByGroup(baseColumns, groupVisibility.value));
-const tableColumns = computed(() => enhanceColumns(filteredColumns.value));
 const rowKey = (row: FlatRow) => row.rowId;
 
 // 避免响应式代理传入 worker 造成结构化克隆失败
 const cloneForWorker = <T>(value: T): T => structuredClone(toRaw(value));
 
 // 查询走 worker，支持搜索 + 筛选；debounce 在输入时触发
-const runQuery = async () => {
+const runQuery = async (totalNeed = false) => {
     loading.value = true;
     error.value = null;
     try {
@@ -98,7 +46,9 @@ const runQuery = async () => {
             enums: cloneForWorker(enums.value),
         });
         rows.value = res.rows;
-        total.value = res.total;
+        if (totalNeed) {
+            total.value = res.total;
+        }
     } catch (e: any) {
         error.value = e?.message ?? String(e);
     } finally {
@@ -113,7 +63,7 @@ onMounted(async () => {
     try {
         await loadData();
         enumOptions.value = await fetchDistinct();
-        await runQuery();
+        await runQuery(true);
     } catch (e: any) {
         error.value = e?.message ?? String(e);
     } finally {
@@ -139,182 +89,8 @@ const booleanColumnMap: Record<string, keyof EnumFilters> = {
     homeAssistantSupported: 'homeAssistantSupported',
 };
 
-// 返回下拉可见列表 + 是否仍有剩余，方便显示“显示更多”
-const getDropdownOptionMeta = (enumKey: keyof EnumFilters, limit?: number) => {
-    const raw = enumOptions.value[enumKey] || [];
-    const keyword = (enumFilterSearch.value[enumKey] || '').trim().toLowerCase();
-    const filtered = keyword ? raw.filter((opt) => opt.value.toLowerCase().includes(keyword)) : raw;
-    const effectiveLimit = limit ?? getEnumFilterLimit(enumKey);
-    return {
-        options: filtered.slice(0, effectiveLimit),
-        total: filtered.length,
-        hasMore: filtered.length > effectiveLimit,
-    };
-};
-
-/** antd 列配置需要静态 filters，仅保留前 80 条用于勾选提示 */
-const getColumnFilterOptions = (enumKey: keyof EnumFilters) => {
-    const raw = enumOptions.value[enumKey] || [];
-    return raw.slice(0, MAX_FILTER_OPTIONS);
-};
-
-/** 生成下拉选项框的DOM */
-const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropdownProps<FlatRow>) => {
-    const search = enumFilterSearch.value[enumKey] || '';
-    const limit = getEnumFilterLimit(enumKey);
-    const { options, hasMore, total } = getDropdownOptionMeta(enumKey, limit);
-    const selectedKeys = (props.selectedKeys as string[]) ?? [];
-    const isAllChecked = selectedKeys.length === 0;
-    const isAllIndeterminate = !isAllChecked && selectedKeys.length > 0;
-
-    const toggleValue = (value: string, checked: boolean) => {
-        const next = checked ? [...selectedKeys, value] : selectedKeys.filter((v) => v !== value);
-        props.setSelectedKeys?.(next);
-    };
-
-    const toggleAll = (checked: boolean) => {
-        if (checked) {
-            props.setSelectedKeys?.([]);
-        }
-    };
-
-    const clear = () => {
-        enumFilterSearch.value = { ...enumFilterSearch.value, [enumKey]: '' };
-        resetEnumFilterLimit(enumKey);
-        props.clearFilters?.();
-    };
-
-    return h('div', { class: 'ant-dropdown ant-table-filter-dropdown custom-filter-dropdown' }, [
-        h('div', { class: 'ant-table-filter-dropdown-search' }, [
-            h(Input, {
-                size: 'small',
-                allowClear: true,
-                placeholder: '搜索选项（缺）',
-                value: search,
-                'onUpdate:value': (val: string) => {
-                    enumFilterSearch.value = { ...enumFilterSearch.value, [enumKey]: val };
-                    resetEnumFilterLimit(enumKey);
-                },
-            }),
-        ]),
-        h(
-            'div',
-            {
-                class: 'ant-dropdown-menu ant-dropdown-menu-root ant-table-filter-dropdown-menu filter-menu',
-            },
-            [
-                h(
-                    'label',
-                    {
-                        class: 'ant-dropdown-menu-item filter-menu-item filter-menu-item__all',
-                    },
-                    [
-                        h(Checkbox, {
-                            checked: isAllChecked,
-                            indeterminate: isAllIndeterminate,
-                            onChange: (e: any) => toggleAll(e.target.checked),
-                        }),
-                        h('span', { class: 'filter-menu-text' }, 'All'),
-                    ]
-                ),
-                options.length
-                    ? options.map((opt) =>
-                        h(
-                            'label',
-                            {
-                                key: opt.value,
-                                class: 'ant-dropdown-menu-item filter-menu-item',
-                            },
-                            [
-                                h(Checkbox, {
-                                    checked: selectedKeys.includes(opt.value),
-                                    onChange: (e: any) => toggleValue(opt.value, e.target.checked),
-                                }),
-                                h('span', { class: 'filter-menu-text' }, `${formatFilterLabel(enumKey, opt.value)} (${opt.count})`),
-                            ]
-                        )
-                    )
-                    : h('div', { class: 'filter-empty' }, '无匹配项'),
-            ]
-        ),
-        hasMore
-            ? h(
-                'div',
-                { class: 'filter-more' },
-                h(
-                    Button,
-                    {
-                        type: 'link',
-                        size: 'small',
-                        onClick: () => increaseEnumFilterLimit(enumKey),
-                    },
-                    () => `See More（缺） (${Math.min(limit, total)}/${total})`
-                )
-            )
-            : null,
-        h('div', { class: 'ant-table-filter-dropdown-btns' }, [
-            h(
-                Button,
-                {
-                    size: 'small',
-                    type: 'link',
-                    onClick: clear,
-                },
-                () => 'Reset（缺）'
-            ),
-            h(
-                Button,
-                {
-                    type: 'primary',
-                    size: 'small',
-                    onClick: () => props.confirm?.(),
-                },
-                () => 'Confirm（缺）'
-            ),
-        ]),
-    ]);
-};
-
-/** 在列定义上再注入 antd 筛选能力、筛选项以及相关配置 */
-const enhanceColumns = (cols: ColumnsType<FlatRow>): ColumnsType<FlatRow> => {
-    return cols.map((col) => {
-        // 存在叶子筛选项就继续递归（比如易微联的叶子筛选项是云支持+设备能力）
-        if ('children' in col && col.children) {
-            return { ...col, children: enhanceColumns(col.children) };
-        }
-        const leaf = col as ColumnType<FlatRow>;
-        const key = leaf.key as string | undefined;
-        if (!key) {
-            throw new Error('每个需要筛选的列都必须提供唯一 key');
-        }
-        const enumKey = enumColumnMap[key] || booleanColumnMap[key];
-        if (!enumKey) return leaf;
-        const opts = getColumnFilterOptions(enumKey);
-        const filters = opts.map((option) => ({
-            text: `${formatFilterLabel(enumKey, option.value)} (${option.count})`,
-            value: option.value,
-        }));
-        const selected = enums.value[enumKey];
-        return {
-            ...leaf,
-            filters,
-            filterMultiple: true,
-            filteredValue: selected && selected.length ? selected.map((value) => String(value)) : null,
-            filterDropdown: renderFilterDropdown(enumKey),
-        };
-    });
-};
-
-const formatFilterLabel = (key: keyof EnumFilters, value: string) => {
-    if (key === 'ewelinkSupported' || key === 'matterSupported' || key === 'homeAssistantSupported') {
-        return value === 'true' ? '是' : '否';
-    }
-    return value || '—';
-};
-
 // antd change 事件只告诉我们列 key -> 选中的值，需要映射回 worker 的 enums 结构
 function applyEnumFiltersFromTable(filters: Record<string, FilterValue | null | undefined>) {
-    console.log('applyEnumFiltersFromTable filter -> ', filters);
     const next = createDefaultEnums();
     let changed = false;
     const assignValues = (filterKey: keyof EnumFilters, values: (string | number | boolean)[] | null | undefined) => {
@@ -372,7 +148,7 @@ const handleTableChange = (_pagination: unknown, filters: Record<string, FilterV
                 />
             </div>
         </div>
-        <div v-if="!rows.length || loading" class="table-footer-placeholder" style="height:48px; flex-shrink: 0;"/>
+        <div v-if="!rows.length || loading" class="table-footer-placeholder" style="height: 48px; flex-shrink: 0" />
     </section>
 </template>
 
@@ -535,17 +311,19 @@ const handleTableChange = (_pagination: unknown, filters: Record<string, FilterV
 }
 
 .status-pill {
+    width: 150px;
     margin-left: 16px;
     font-size: 13px;
     color: #6b7280;
     white-space: nowrap;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     padding: 6px 12px;
     border-radius: 999px;
     color: #1d4ed8;
-    border: 1px solid #1d4ed8;
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
