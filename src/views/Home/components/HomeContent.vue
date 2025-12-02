@@ -214,7 +214,6 @@ const handleTableChange = (pager: any, filters: Record<string, FilterValue | nul
     min-height: 0;
     display: flex;
     flex-direction: column;
-    max-height: 900px;
     min-height: 300px;
 }
 

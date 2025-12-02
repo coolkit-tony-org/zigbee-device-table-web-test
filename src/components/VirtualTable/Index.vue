@@ -2,7 +2,7 @@
     <div class="virtual-table-wrapper" ref="rootRef">
         <Table
             v-bind="{
-                scroll: { y: '100%' },
+                scroll: { y: '100%', x: 'max-content' },
                 columns: processedColumns,
                 dataSource: dataSource,
                 bordered: false,

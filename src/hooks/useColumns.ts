@@ -128,6 +128,12 @@ const booleanColumnMap: Record<string, keyof EnumFilters> = {
 
 type SpanStrategy = 'deviceInfo' | false;
 
+const withMinWidth = (minWidth: number) => ({
+    width: minWidth,
+    onCell: () => ({ style: { minWidth: `${minWidth}px` } }),
+    onHeaderCell: () => ({ style: { minWidth: `${minWidth}px` } }),
+});
+
 const createColumn = (key: keyof FlatRow | string, title: string, options: Partial<ColumnType<FlatRow>> = {}, span: SpanStrategy = false): ColumnType<FlatRow> => ({
     key,
     dataIndex: key as ColumnType<FlatRow>['dataIndex'],
@@ -142,7 +148,6 @@ const createColumn = (key: keyof FlatRow | string, title: string, options: Parti
             }
         );
     },
-    width: 160,
     align: 'left',
     customCell:
         span === false
@@ -186,8 +191,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'matterSupportedClusters',
         'Cluster',
         {
-            width: 349,
             customRender: ({ record }) => stringifyClusterInfo(record.matterSupportedClusters, record.matterUnsupportedClusters),
+            ...withMinWidth(349)
         },
         false
     ),
@@ -196,8 +201,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'appleSupported',
         'Apple Home',
         {
-            width: 260,
             customRender: ({ record }) => withNotes(record.appleSupported, record.appleNotes),
+            ...withMinWidth(260)
         },
         false
     ),
@@ -205,8 +210,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'googleSupported',
         'Google Home',
         {
-            width: 260,
             customRender: ({ record }) => withNotes(record.googleSupported, record.googleNotes),
+            ...withMinWidth(260)
         },
         false
     ),
@@ -214,8 +219,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'smartThingsSupported',
         'SmartThings',
         {
-            width: 260,
             customRender: ({ record }) => withNotes(record.smartThingsSupported, record.smartThingsNotes),
+            ...withMinWidth(260)
         },
         false
     ),
@@ -223,8 +228,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'alexaSupported',
         'Alexa',
         {
-            width: 260,
             customRender: ({ record }) => withNotes(record.alexaSupported, record.alexaNotes),
+            ...withMinWidth(260)
         },
         false
     ),
