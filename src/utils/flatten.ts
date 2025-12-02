@@ -29,7 +29,7 @@ export function flattenDevice(device: RawDevice, index: number): FlatRow[] {
         const apple = mapThirdParty(thirdParty, 'Apple Home App');
         const google = mapThirdParty(thirdParty, 'Google Home App');
         const smart = mapThirdParty(thirdParty, 'SmartThings App');
-        const alexa = mapThirdParty(thirdParty, 'Alexa App');
+        const alexa = mapThirdParty(thirdParty, 'Amazon Alexa');
 
         const supportedClusters = normalizeList(matterDev?.supportedClusters);
         const unsupportedClusters = normalizeList(matterDev?.unsupportedClusters);
