@@ -10,8 +10,11 @@ import { version } from './package.json';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+const repo = 'zigbee-device-table-web-test';
+
 // https://vite.dev/config/
 export default defineConfig({
+    base: `/${repo}/`,
     plugins: [
         vue(),
         createHtmlPlugin({
