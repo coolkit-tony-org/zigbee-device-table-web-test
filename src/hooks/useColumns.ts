@@ -240,7 +240,7 @@ const homeAssistantColumns: ColumnsType<FlatRow> = [
         width: 166,
         customRender: ({ record }) => boolIcon(record.homeAssistantSupported),
     }),
-    createColumn('homeAssistantEntities', 'entities', {
+    createColumn('homeAssistantEntities', 'Entities', {
         width: 220,
         customRender: ({ record }) => listDisplay(record.homeAssistantEntities),
     }),
