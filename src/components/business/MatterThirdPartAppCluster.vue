@@ -4,11 +4,11 @@
             {{ item }}
         </div>
     </div>
-    <Popover placement="bottomLeft" v-if="hasNotes">
+    <Popover placement="bottomLeft" v-if="hasNotes" trigger="click">
         <template #content>
             <div class="li" v-for="note in notes" :key="note">{{ note }}</div>
         </template>
-        <div class="cluster-tag" style="margin-top: 8px; cursor: pointer;">
+        <div class="cluster-tag" style="margin-top: 8px; cursor: pointer">
             <img :src="warning" alt="" />
         </div>
     </Popover>
@@ -62,5 +62,10 @@ const hasNotes = computed(() => {
         margin-bottom: 3px;
         background-color: #333333;
     }
+}
+</style>
+<style>
+.ant-popover-inner {
+    max-width: 300px;
 }
 </style>

@@ -24,8 +24,6 @@ export function flattenDevice(device: RawDevice, index: number): FlatRow[] {
 
     const matterDevices = matterSupported && device.matterBridge?.devices?.length ? device.matterBridge.devices! : [null];
 
-    if (matterDevices.length > 1) console.log('device.deviceInfo.model', device.deviceInfo.model);
-
     return matterDevices.map((matterDev: MatterDevice | null, idx) => {
         const thirdParty = matterDev?.thirdPartyAppSupport ?? [];
         const apple = mapThirdParty(thirdParty, 'Apple Home App');
