@@ -46,6 +46,10 @@ const createDefaultEnums = (): EnumFilters => ({
     matterDeviceType: [],
     matterProtocolVersion: [],
     matterSupportedClusters: [],
+    appleSupported: [],
+    googleSupported: [],
+    smartThingsSupported: [],
+    alexaSupported: [],
     homeAssistantSupported: [],
     homeAssistantEntities: [],
 });
@@ -63,6 +67,10 @@ const enumOptions = ref<EnumOptionMap>({
     matterDeviceType: [],
     matterProtocolVersion: [],
     matterSupportedClusters: [],
+    appleSupported: [],
+    googleSupported: [],
+    smartThingsSupported: [],
+    alexaSupported: [],
     homeAssistantSupported: [],
     homeAssistantEntities: [],
 });
@@ -105,6 +113,10 @@ const enumColumnMap: Record<string, keyof EnumFilters> = {
     matterDeviceType: 'matterDeviceType',
     matterProtocolVersion: 'matterProtocolVersion',
     matterSupportedClusters: 'matterSupportedClusters',
+    appleSupported: 'appleSupported',
+    googleSupported: 'googleSupported',
+    smartThingsSupported: 'smartThingsSupported',
+    alexaSupported: 'alexaSupported',
     homeAssistantEntities: 'homeAssistantEntities',
 };
 
@@ -171,7 +183,7 @@ const matterColumns: ColumnsType<FlatRow> = [
     }),
     createColumn('matterDeviceType', 'Matter Device Type', { width: 195 }, false),
     createColumn(
-        'Matter Cluster',
+        'matterSupportedClusters',
         'Cluster',
         {
             width: 349,

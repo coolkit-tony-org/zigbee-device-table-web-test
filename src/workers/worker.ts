@@ -17,6 +17,10 @@ export interface EnumFilters {
     matterDeviceType?: string[];
     matterProtocolVersion?: string[];
     matterSupportedClusters?: string[];
+    appleSupported?: string[];
+    googleSupported?: string[];
+    smartThingsSupported?: string[];
+    alexaSupported?: string[];
     homeAssistantSupported?: boolean[];
     homeAssistantEntities?: string[];
 }
@@ -39,6 +43,10 @@ export type EnumOptionMap = {
     matterDeviceType: EnumOption[];
     matterProtocolVersion: EnumOption[];
     matterSupportedClusters: EnumOption[];
+    appleSupported: EnumOption[];
+    googleSupported: EnumOption[];
+    smartThingsSupported: EnumOption[];
+    alexaSupported: EnumOption[];
     homeAssistantSupported: EnumOption[];
     homeAssistantEntities: EnumOption[];
 };
@@ -118,6 +126,10 @@ function passEnums(row: FlatRow, enums?: EnumFilters): boolean {
     if (!includes(enums.matterDeviceType, row.matterDeviceType)) return false;
     if (!includes(enums.matterProtocolVersion, row.matterProtocolVersion)) return false;
     if (!includesAny(enums.matterSupportedClusters, row.matterSupportedClusters)) return false;
+    if (!includesAny(enums.appleSupported, row.appleSupported)) return false;
+    if (!includesAny(enums.googleSupported, row.googleSupported)) return false;
+    if (!includesAny(enums.smartThingsSupported, row.smartThingsSupported)) return false;
+    if (!includesAny(enums.alexaSupported, row.alexaSupported)) return false;
     if (enums.homeAssistantSupported?.length) {
         if (!enums.homeAssistantSupported.includes(row.homeAssistantSupported)) return false;
     }
@@ -220,6 +232,10 @@ const api = {
             matterDeviceType: collect((row) => row.matterDeviceType),
             matterProtocolVersion: collect((row) => row.matterProtocolVersion),
             matterSupportedClusters: collectArray((row) => row.matterSupportedClusters),
+            appleSupported: collectArray((row) => row.appleSupported),
+            googleSupported: collectArray((row) => row.googleSupported),
+            smartThingsSupported: collectArray((row) => row.smartThingsSupported),
+            alexaSupported: collectArray((row) => row.alexaSupported),
             homeAssistantSupported: collect((row) => row.homeAssistantSupported, true),
             homeAssistantEntities: collectArray((row) => row.homeAssistantEntities),
         };

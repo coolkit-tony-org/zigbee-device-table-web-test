@@ -85,6 +85,10 @@ const enumColumnMap: Record<string, keyof EnumFilters> = {
     matterDeviceType: 'matterDeviceType',
     matterProtocolVersion: 'matterProtocolVersion',
     matterSupportedClusters: 'matterSupportedClusters',
+    appleSupported: 'appleSupported',
+    googleSupported: 'googleSupported',
+    smartThingsSupported: 'smartThingsSupported',
+    alexaSupported: 'alexaSupported',
     homeAssistantEntities: 'homeAssistantEntities',
 };
 
