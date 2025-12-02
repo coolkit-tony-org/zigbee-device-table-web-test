@@ -9,7 +9,8 @@
         "preview": "vite preview",
         "cz": "git-cz",
         "prepare": "husky install",
-        "lint:lint-staged": "lint-staged"
+        "lint:lint-staged": "lint-staged",
+        "lint:fix": "pnpm exec eslint src --ext .js,.jsx,.ts,.tsx,.vue --fix"
     },
     "dependencies": {
         "@vueuse/core": "^14.0.0",

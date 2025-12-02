@@ -38,12 +38,13 @@ const hasNotes = computed(() => {
 .cluster-tag {
     background: rgba(150, 150, 150, 0.1);
     border-radius: 6px 6px 6px 6px;
-    white-space: nowrap;
     display: inline-flex;
     align-items: center;
     padding: 4px 8px;
     font-size: 12px;
     font-weight: 500;
+    min-width: 0;
+    word-break: break-all;
 
     img {
         width: 16px;

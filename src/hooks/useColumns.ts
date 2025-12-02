@@ -83,9 +83,10 @@ const boolIcon = (value?: boolean) =>
         },
         src: value ? correct : wrong,
     });
-const listDisplay = (list: string[]) => (list.length ? list.join(',') : '无');
-const ewelinkCapabilitiesTransform = (list: string[]) => {
-    if (!list.length) return '无';
+const listDisplay = (list: string[]) => (list.length ? list.join(',') : '暂未适配该设备（缺）');
+const ewelinkCapabilitiesTransform = (list: string[], supported: boolean) => {
+    if (!list.length && !supported) return '易微联 APP 暂不支持该设备（缺）';
+    if (!list.length && supported) return '暂无支持的能力（缺）';
     return h(EwelinkCapabilities, {
         capabilities: list,
     });
@@ -128,12 +129,6 @@ const booleanColumnMap: Record<string, keyof EnumFilters> = {
 
 type SpanStrategy = 'deviceInfo' | false;
 
-const withMinWidth = (minWidth: number) => ({
-    width: minWidth,
-    onCell: () => ({ style: { minWidth: `${minWidth}px` } }),
-    onHeaderCell: () => ({ style: { minWidth: `${minWidth}px` } }),
-});
-
 const createColumn = (key: keyof FlatRow | string, title: string, options: Partial<ColumnType<FlatRow>> = {}, span: SpanStrategy = false): ColumnType<FlatRow> => ({
     key,
     dataIndex: key as ColumnType<FlatRow>['dataIndex'],
@@ -159,23 +154,28 @@ const createColumn = (key: keyof FlatRow | string, title: string, options: Parti
 });
 
 const deviceInfoColumns: ColumnsType<FlatRow> = [
-    createColumn('deviceModel', 'Model', { width: 160, fixed: true, customRender: ({ record }) => record.deviceModel || '--' }, 'deviceInfo'),
-    createColumn('deviceType', 'Type', { width: 130, customRender: ({ record }) => record.deviceType || '--' }, 'deviceInfo'),
-    createColumn('deviceBrand', 'Brand', { width: 130, customRender: ({ record }) => record.deviceBrand || '--' }, 'deviceInfo'),
-    createColumn('deviceCategory', 'Category', { width: 130, customRender: ({ record }) => record.deviceCategory || '--' }, 'deviceInfo'),
+    createColumn('deviceModel', 'Model', { width: 160, fixed: true, customRender: ({ record }) => record.deviceModel }, 'deviceInfo'),
+    createColumn('deviceType', 'Type', { width: 130, customRender: ({ record }) => record.deviceType }, 'deviceInfo'),
+    createColumn('deviceBrand', 'Brand', { width: 130, customRender: ({ record }) => record.deviceBrand }, 'deviceInfo'),
+    createColumn('deviceCategory', 'Category', { width: 130, customRender: ({ record }) => record.deviceCategory }, 'deviceInfo'),
 ];
 
 const ewelinkColumns: ColumnsType<FlatRow> = [
-    createColumn('ewelinkSupported', 'Sync to eWeLink', {
-        width: 166,
-        customRender: ({ record }) => boolIcon(record.ewelinkSupported),
-    }, 'deviceInfo'),
+    createColumn(
+        'ewelinkSupported',
+        'Sync to eWeLink',
+        {
+            width: 166,
+            customRender: ({ record }) => boolIcon(record.ewelinkSupported),
+        },
+        'deviceInfo'
+    ),
     createColumn(
         'ewelinkCapabilities',
         'Capabilities of eWeLink',
         {
             width: 280,
-            customRender: ({ record }) => ewelinkCapabilitiesTransform(record.ewelinkCapabilities),
+            customRender: ({ record }) => ewelinkCapabilitiesTransform(record.ewelinkCapabilities, record.ewelinkSupported),
         },
         'deviceInfo'
     ),
@@ -191,8 +191,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'matterSupportedClusters',
         'Cluster',
         {
+            width: 400,
             customRender: ({ record }) => stringifyClusterInfo(record.matterSupportedClusters, record.matterUnsupportedClusters),
-            ...withMinWidth(349)
         },
         false
     ),
@@ -201,8 +201,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'appleSupported',
         'Apple Home',
         {
-            customRender: ({ record }) => withNotes(record.appleSupported, record.appleNotes),
-            ...withMinWidth(260)
+            width: 300,
+            customRender: ({ record }) => withNotes(record.appleSupported, record.appleNotes, [...record.matterSupportedClusters, ...record.matterUnsupportedClusters]),
         },
         false
     ),
@@ -210,8 +210,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'googleSupported',
         'Google Home',
         {
-            customRender: ({ record }) => withNotes(record.googleSupported, record.googleNotes),
-            ...withMinWidth(260)
+            width: 300,
+            customRender: ({ record }) => withNotes(record.googleSupported, record.googleNotes, [...record.matterSupportedClusters, ...record.matterUnsupportedClusters]),
         },
         false
     ),
@@ -219,8 +219,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'smartThingsSupported',
         'SmartThings',
         {
-            customRender: ({ record }) => withNotes(record.smartThingsSupported, record.smartThingsNotes),
-            ...withMinWidth(260)
+            width: 300,
+            customRender: ({ record }) => withNotes(record.smartThingsSupported, record.smartThingsNotes, [...record.matterSupportedClusters, ...record.matterUnsupportedClusters]),
         },
         false
     ),
@@ -228,8 +228,8 @@ const matterColumns: ColumnsType<FlatRow> = [
         'alexaSupported',
         'Alexa',
         {
-            customRender: ({ record }) => withNotes(record.alexaSupported, record.alexaNotes),
-            ...withMinWidth(260)
+            width: 300,
+            customRender: ({ record }) => withNotes(record.alexaSupported, record.alexaNotes, [...record.matterSupportedClusters, ...record.matterUnsupportedClusters]),
         },
         false
     ),
@@ -246,8 +246,10 @@ const homeAssistantColumns: ColumnsType<FlatRow> = [
     }),
 ];
 
-function withNotes(supported: string[], notes: string[]) {
-    if (!supported.length && !notes.length) return '无';
+function withNotes(supported: string[], notes: string[], clusters: string[]) {
+    const isThirdAppEmpty = !supported.length && !notes.length;
+    if (isThirdAppEmpty && !clusters.length) return '暂未适配该设备（缺）';
+    if (isThirdAppEmpty && clusters.length) return '该平台不支持该设备类型（缺）';
     return h(MatterThirdPartAppCluster, {
         supported,
         notes,
@@ -268,7 +270,7 @@ const getDropdownOptionMeta = (enumKey: keyof EnumFilters, limit?: number) => {
 };
 
 function stringifyClusterInfo(supported: string[], unsupported: string[]) {
-    if (!supported.length && !unsupported.length) return '无';
+    if (!supported.length && !unsupported.length) return '暂未适配该设备（缺）';
     return h(Cluster, {
         supported,
         unsupported,
@@ -331,29 +333,33 @@ const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropd
 
     return h('div', { class: 'ant-dropdown ant-table-filter-dropdown custom-filter-dropdown' }, [
         h('div', { class: 'ant-table-filter-dropdown-search' }, [
-            h(Input, {
-                size: 'small',
-                allowClear: true,
-                placeholder: '请输入关键字搜索（缺）',
-                value: search,
-                'onUpdate:value': (val: string) => {
-                    enumFilterSearch.value = { ...enumFilterSearch.value, [enumKey]: val };
-                    resetEnumFilterLimit(enumKey);
+            h(
+                Input,
+                {
+                    size: 'small',
+                    allowClear: true,
+                    placeholder: '请输入关键字搜索（缺）',
+                    value: search,
+                    'onUpdate:value': (val: string) => {
+                        enumFilterSearch.value = { ...enumFilterSearch.value, [enumKey]: val };
+                        resetEnumFilterLimit(enumKey);
+                    },
+                    style: {
+                        height: '32px',
+                    },
                 },
-                style: {
-                    height: '32px',
-                },
-            }, {
-                prefix: () =>
-                    h('img', {
-                        src: searchIcon,
-                        alt: 'search',
-                        style: {
-                            width: '14px',
-                            height: '14px',
-                        },
-                    }),
-            }),
+                {
+                    prefix: () =>
+                        h('img', {
+                            src: searchIcon,
+                            alt: 'search',
+                            style: {
+                                width: '14px',
+                                height: '14px',
+                            },
+                        }),
+                }
+            ),
         ]),
         h(
             'div',

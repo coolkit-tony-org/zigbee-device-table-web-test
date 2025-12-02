@@ -2,10 +2,11 @@
     <div class="virtual-table-wrapper" ref="rootRef">
         <Table
             v-bind="{
-                scroll: { y: '100%', x: 'max-content' },
+                scroll: { y: '100%' },
                 columns: processedColumns,
                 dataSource: dataSource,
                 bordered: false,
+                tableLayout: 'fixed',
                 ...$attrs,
             }"
             @change="onTableChange"
@@ -275,6 +276,12 @@ onBeforeUnmount(() => {
         justify-content: center;
         margin-top: 24px;
         margin-bottom: 0;
+    }
+
+    :deep(.ant-table-tbody .ant-table-cell) {
+        white-space: normal; /* 允许换行 */
+        word-break: break-all; /* 长英文 / 长路径也能断行 */
+        overflow-wrap: break-word; /* 保险一点 */
     }
 }
 </style>
