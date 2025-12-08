@@ -154,7 +154,6 @@ const createColumn = (key: keyof FlatRow | string, title: string, options: Parti
 });
 
 const deviceInfoColumns: ColumnsType<FlatRow> = [
-    createColumn('deviceModel', 'Model', { width: 160, fixed: true, customRender: ({ record }) => record.deviceModel }, 'deviceInfo'),
     createColumn('deviceType', 'Type', { width: 130, customRender: ({ record }) => record.deviceType }, 'deviceInfo'),
     createColumn('deviceBrand', 'Brand', { width: 130, customRender: ({ record }) => record.deviceBrand }, 'deviceInfo'),
     createColumn('deviceCategory', 'Category', { width: 130, customRender: ({ record }) => record.deviceCategory }, 'deviceInfo'),
@@ -471,6 +470,7 @@ const enhanceColumns = (cols: ColumnsType<FlatRow>): ColumnsType<FlatRow> => {
 
 export const useColumns = () => {
     const baseColumns: ColumnsType<FlatRow> = [
+        createColumn('deviceModel', 'Model', { width: 160, fixed: true, customRender: ({ record }) => record.deviceModel }, 'deviceInfo'),
         {
             title: 'Device information',
             key: 'group-device',
