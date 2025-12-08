@@ -489,12 +489,20 @@ const enhanceColumns = (cols: ColumnsType<FlatRow>): ColumnsType<FlatRow> => {
             value: option.value,
         }));
         const selected = enums.value[enumKey];
+        const clearSearchForColumn = () => {
+            enumFilterSearch.value = { ...enumFilterSearch.value, [enumKey]: '' };
+        };
         return {
             ...leaf,
             filters,
             filterMultiple: true,
             filteredValue: selected && selected.length ? selected.map((value) => String(value)) : null,
             filterDropdown: renderFilterDropdown(enumKey),
+            onFilterDropdownOpenChange: async (visible: boolean) => {
+                if (visible) {
+                    clearSearchForColumn();
+                }
+            },
         };
     });
 };
