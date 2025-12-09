@@ -30,7 +30,7 @@ const pagination = reactive({
     showQuickJumper: true,
     showSizeChanger: true,
     total: total.value,
-    showTotal: (t: number) => `共 ${t} 条`,
+    showTotal: (t: number) => `Total: ${t}`,
 });
 const rowKey = (row: FlatRow) => row.rowId;
 
@@ -141,10 +141,10 @@ const handleTableChange = (pager: any, filters: Record<string, FilterValue | nul
                 <CheckboxGroup v-model:value="groupVisibility" name="checkboxgroup" :options="groupOptions" />
             </div>
             <div class="toolbar-search">
-                <SearchInput v-model:value="searchText" placeholder="请输入关键字进行搜索（缺）" style="width: 360px" allow-clear @input="debouncedQuery()" />
+                <SearchInput v-model:value="searchText" placeholder="Enter Keyword to Search" style="width: 360px" allow-clear @input="debouncedQuery()" />
                 <span class="status-pill">
                     <span class="status-dot" />
-                    <span class="status-count">共 {{ total }} 条</span>
+                    <span class="status-count">Total: {{ total }}</span>
                 </span>
             </div>
         </div>

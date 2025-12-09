@@ -39,9 +39,7 @@ export function flattenDevice(device: RawDevice, index: number): FlatRow[] {
             device.deviceInfo.type,
             device.deviceInfo.brand,
             device.deviceInfo.category,
-            ewelinkSupported ? '支持易微联云' : '不支持易微联云',
             ...(device.ewelinkCloud?.capabilities ?? []),
-            matterSupported ? '支持Matter' : '不支持Matter',
             matterDev?.deviceType,
             matterDev?.protocolVersion,
             supportedClusters.join(' '),
@@ -50,7 +48,6 @@ export function flattenDevice(device: RawDevice, index: number): FlatRow[] {
             google.supported.join(' '),
             smart.supported.join(' '),
             alexa.supported.join(' '),
-            haSupported ? '支持HomeAssistant' : '不支持HomeAssistant',
             ...(device.homeAssistant?.entities ?? []),
         ]);
 

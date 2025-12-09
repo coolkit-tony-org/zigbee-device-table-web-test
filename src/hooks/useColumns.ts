@@ -83,28 +83,28 @@ const boolIcon = (value?: boolean) =>
         },
         src: value ? correct : wrong,
     });
-const listDisplay = (list: string[]) => (list.length ? list.join(',') : '暂未适配该设备（缺）');
+const listDisplay = (list: string[]) => (list.length ? list.join(',') : 'Not Yet Supported');
 const ewelinkCapabilitiesTransform = (list: string[], supported: boolean) => {
-    if (!list.length && !supported) return '易微联 APP 暂不支持该设备（缺）';
-    if (!list.length && supported) return '暂无支持的能力（缺）';
+    if (!list.length && !supported) return 'Unsupported in eWeLink App';
+    if (!list.length && supported) return 'No Supported Capabilities';
     return h(EwelinkCapabilities, {
         capabilities: list,
     });
 };
 
 const titleTipMap: Record<string, string> = {
-    ewelinkSupported: '支持在易微联 APP 添加该设备',
-    ewelinkCapabilities: '对应设备在易微联 APP 支持的能力',
-    matterSupported: '支持通过 Matter Bridge 同步到第三方生态圈',
-    matterDeviceType: '对应设备在 Matter 标准协议中的设备类别',
-    matterProtocolVersion: 'Matter 协议支持该设备类型的版本号',
-    matterSupportedClusters: 'Matter 标准协议中设备的能力',
-    appleSupported: '设备同步至 Apple Home 支持的功能',
-    googleSupported: '设备同步至 Google Home 支持的功能',
-    smartThingsSupported: '设备同步至 SmartThings 支持的功能',
-    alexaSupported: '设备同步至 Alexa 支持的功能',
-    homeAssistantSupported: '支持同步到 Home Assistant',
-    homeAssistantEntities: '设备同步至 Home Assistant 时对应的实体',
+    ewelinkSupported: 'Supported in eWeLink App',
+    ewelinkCapabilities: 'eWeLink App Capabilities',
+    matterSupported: 'Sync via Matter Bridge',
+    matterDeviceType: 'Matter Device Type',
+    matterProtocolVersion: 'Matter Version',
+    matterSupportedClusters: 'Matter Capabilities',
+    appleSupported: 'Apple Home Features',
+    googleSupported: 'Google Home Features',
+    smartThingsSupported: 'SmartThings Features',
+    alexaSupported: 'Alexa Features',
+    homeAssistantSupported: 'Home Assistant Support',
+    homeAssistantEntities: 'Home Assistant Entity',
 };
 
 const enumColumnMap: Record<string, keyof EnumFilters> = {
@@ -218,7 +218,7 @@ const matterColumns: ColumnsType<FlatRow> = [
         width: 166,
         customRender: ({ record }) => boolIcon(record.matterSupported),
     }),
-    createColumn('matterDeviceType', 'Matter Device Type', { width: 195 }, false),
+    createColumn('matterDeviceType', 'Matter Device Type', { width: 200 }, false),
     createColumn(
         'matterSupportedClusters',
         'Cluster',
@@ -280,8 +280,8 @@ const homeAssistantColumns: ColumnsType<FlatRow> = [
 
 function withNotes(supported: string[], notes: string[], clusters: string[]) {
     const isThirdAppEmpty = !supported.length && !notes.length;
-    if (isThirdAppEmpty && !clusters.length) return '暂未适配该设备（缺）';
-    if (isThirdAppEmpty && clusters.length) return '该平台不支持该设备类型（缺）';
+    if (isThirdAppEmpty && !clusters.length) return 'Not Yet Supported';
+    if (isThirdAppEmpty && clusters.length) return 'Device Type Unsupported';
     return h(MatterThirdPartAppCluster, {
         supported,
         notes,
@@ -326,7 +326,15 @@ const filterColumnsByGroup = (cols: ColumnsType<FlatRow>, visibleGroups: GroupKe
 
 const formatFilterLabel = (key: keyof EnumFilters, value: string) => {
     if (key === 'ewelinkSupported' || key === 'matterSupported' || key === 'homeAssistantSupported') {
-        return value === 'true' ? '是' : '否';
+        return h('img', {
+            src: value === 'true' ? correct : wrong,
+            alt: value === 'true' ? 'supported' : 'unsupported',
+            style: {
+                width: '16px',
+                height: '16px',
+                marginTop: '-3px'
+            },
+        });
     }
     return value || '—';
 };
@@ -370,7 +378,7 @@ const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropd
                 {
                     size: 'small',
                     allowClear: true,
-                    placeholder: '请输入关键字搜索（缺）',
+                    placeholder: 'Enter Keyword to Search',
                     value: search,
                     'onUpdate:value': (val: string) => {
                         enumFilterSearch.value = { ...enumFilterSearch.value, [enumKey]: val };
@@ -426,11 +434,11 @@ const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropd
                                     checked: selectedKeys.includes(opt.value),
                                     onChange: (e: any) => toggleValue(opt.value, e.target.checked),
                                 }),
-                                h('span', { class: 'filter-menu-text' }, `${formatFilterLabel(enumKey, opt.value)} (${opt.count})`),
+                                h('span', { class: 'filter-menu-text' }, [formatFilterLabel(enumKey, opt.value), ` (${opt.count})`]),
                             ]
                         )
                     )
-                    : h('div', { class: 'filter-empty' }, '无匹配项'),
+                    : h('div', { class: 'filter-empty' }, 'No Results Found'),
             ]
         ),
         hasMore
@@ -487,7 +495,7 @@ const enhanceColumns = (cols: ColumnsType<FlatRow>): ColumnsType<FlatRow> => {
         if (!enumKey) return leaf;
         const opts = getColumnFilterOptions(enumKey);
         const filters = opts.map((option) => ({
-            text: `${formatFilterLabel(enumKey, option.value)} (${option.count})`,
+            text: [formatFilterLabel(enumKey, option.value), ` (${option.count})`],
             value: option.value,
         }));
         const selected = enums.value[enumKey];

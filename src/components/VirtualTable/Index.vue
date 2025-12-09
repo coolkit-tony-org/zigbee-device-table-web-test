@@ -29,11 +29,11 @@
     </div>
     <div v-if="loading" class="loading placeholder">
         <img src="@/assets/img/searching.png" alt="" />
-        搜索中（缺）
+        Searching…
     </div>
     <div v-if="!dataSource.length && !loading" class="empty placeholder">
         <img src="@/assets/img/no-devices.png" alt="" />
-        暂未搜索到数据（缺）
+        No Results Found
     </div>
 </template>
 
