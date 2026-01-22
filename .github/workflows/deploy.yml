@@ -2,7 +2,7 @@ name: Deploy (Project Pages)
 
 on:
     push:
-        branches: [master]
+        branches: [master, master-alt-static]
 
 permissions:
     contents: write
@@ -11,9 +11,8 @@ jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
         env:
-            IS_PRODUCTION: ${{ github.repository == 'eWeLinkCUBE/bridge.sonoff.tech' && 'true' || 'false' }}
-            VITE_BASE_URL: ${{ github.repository == 'eWeLinkCUBE/bridge.sonoff.tech' && '/' || '/zigbee-device-table-web-test' }}
-            # USE_CUSTOM_DOMAIN: 'true'
+            IS_PRODUCTION: ${{ github.repository == 'eWeLinkCUBE/bridge.sonoff.tech' && github.ref_name == 'master' && 'true' || 'false' }}
+            VITE_BASE_URL: ${{ (github.repository == 'eWeLinkCUBE/bridge.sonoff.tech' && github.ref_name == 'master') && '/' || format('/{0}/{1}/', github.event.repository.name, github.ref_name) }}
             # CUSTOM_DOMAIN: example.com
 
         steps:
@@ -82,8 +81,17 @@ jobs:
                     </body>
                   </html>' > dist/404.html
 
-            - name: Deploy to gh-pages
+            - name: Deploy to gh-pages (root)
+              if: env.IS_PRODUCTION == 'true'
               uses: peaceiris/actions-gh-pages@v4
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./dist
+
+            - name: Deploy to gh-pages (subdir)
+              if: github.repository != 'eWeLinkCUBE/bridge.sonoff.tech'
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist
+                  destination_dir: ${{ github.ref_name }}
