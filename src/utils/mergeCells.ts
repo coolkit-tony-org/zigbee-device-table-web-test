@@ -1,7 +1,7 @@
 import type { FlatRow } from '@/types/data';
 
 /** 需要执行合并的 key */
-export const MERGE_COLUMN_KEYS: Array<keyof FlatRow> = ['deviceSource', 'deviceModel', 'deviceBrand', 'deviceCategory', 'ewelinkSupported', 'ewelinkCapabilities'] as const;
+export const MERGE_COLUMN_KEYS: Array<keyof FlatRow> = ['uiid', 'deviceSource', 'deviceModel', 'deviceBrand', 'deviceCategory', 'ewelinkSupported', 'ewelinkCapabilities'] as const;
 /** 合并的 key 对应 excel 列数 */
 export const MERGE_EXCEL_COLUMNS = [0, 1, 2, 3, 4, 5] as const;
 
@@ -33,11 +33,7 @@ export const buildMergeSpans = (rows: FlatRow[]) => {
     return spans;
 };
 
-export const buildMergeRanges = (
-    rows: FlatRow[],
-    startRow0: number,
-    mergeColumns: readonly number[] = MERGE_EXCEL_COLUMNS
-) => {
+export const buildMergeRanges = (rows: FlatRow[], startRow0: number, mergeColumns: readonly number[] = MERGE_EXCEL_COLUMNS) => {
     const merges: Array<{ s: { r: number; c: number }; e: { r: number; c: number } }> = [];
     let i = 0;
     while (i < rows.length) {

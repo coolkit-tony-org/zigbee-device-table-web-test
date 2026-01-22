@@ -266,11 +266,14 @@ const thirdAppTips = (thirdApp: string) =>
 const titleTipMap: Record<string, string> = {
     deviceSource: 'Device sources supported by the Bridge',
     ewelinkSupported: 'Indicates whether the device can be synced to the eWeLink Cloud and displayed/controlled in the eWeLink app',
-    ewelinkCapabilities: 'Capabilities after the device is synced to the eWeLink app. "N/A" means the device cannot be synced to the eWeLink Cloud. "No supported capabilities" means the device has no practical controllable features in the eWeLink app.',
+    ewelinkCapabilities:
+        'Capabilities after the device is synced to the eWeLink app. "N/A" means the device cannot be synced to the eWeLink Cloud. "No supported capabilities" means the device has no practical controllable features in the eWeLink app.',
     matterSupported: 'Indicates whether the device can be synced to other Matter platforms via the Matter Bridge.',
-    matterDeviceType: 'Device type defined for this device in the Matter 1.4 standard. "No corresponding Matter device type" means this device type is not supported in Matter 1.4.',
+    matterDeviceType:
+        'Device type defined for this device in the Matter 1.4 standard. "No corresponding Matter device type" means this device type is not supported in Matter 1.4.',
     matterProtocolVersion: 'Supported Matter Version',
-    matterSupportedClusters: 'Clusters (capabilities) defined for this device in the Matter 1.4 standard. ☑ means the gateway already supports this cluster; ✘ means it is not supported yet.',
+    matterSupportedClusters:
+        'Clusters (capabilities) defined for this device in the Matter 1.4 standard. ☑ means the gateway already supports this cluster; ✘ means it is not supported yet.',
     appleSupported: thirdAppTips('Apple Home'),
     googleSupported: thirdAppTips('Google Home'),
     smartThingsSupported: thirdAppTips('SmartThings'),
@@ -293,7 +296,7 @@ const createColumn = (key: keyof FlatRow | string, title: string, options: Parti
                 {
                     default: () => h('div', { style: { cursor: 'pointer' } }, title),
                     content: () => h('div', titleTipMap[key]),
-                }
+                },
             );
         },
         align: 'left',
@@ -315,6 +318,11 @@ const deviceInfoColumns: ColumnsType<FlatRow> = [
         key: 'deviceInformation',
         fixed: true,
         children: [
+            createColumn('uiid', 'UIID', {
+                width: 160,
+                fixed: true,
+                customRender: ({ record }) => record.uiid,
+            }),
             createColumn('deviceModel', 'Model', {
                 width: 160,
                 fixed: true,
@@ -363,7 +371,10 @@ const platformCapabilityColumns: ColumnGroupType<FlatRow>[] = [
                 width: 400,
                 customRender: ({ record }) => stringifyClusterInfo(record.matterSupportedClusters, record.matterUnsupportedClusters),
             }),
-            createColumn('matterProtocolVersion', 'Matter Version', { width: 150, customRender: ({ record }) => record.matterProtocolVersion || 'No corresponding Matter device type' }),
+            createColumn('matterProtocolVersion', 'Matter Version', {
+                width: 150,
+                customRender: ({ record }) => record.matterProtocolVersion || 'No corresponding Matter device type',
+            }),
             createColumn('appleSupported', 'Apple Home', {
                 width: 300,
                 customRender: ({ record }) => withNotes(record, 'appleSupported', 'appleNotes'),
@@ -401,7 +412,7 @@ const platformCapabilityColumns: ColumnGroupType<FlatRow>[] = [
 function withNotes(
     record: FlatRow,
     supportKey: 'appleSupported' | 'googleSupported' | 'smartThingsSupported' | 'alexaSupported',
-    notesKey: 'appleNotes' | 'googleNotes' | 'smartThingsNotes' | 'alexaNotes'
+    notesKey: 'appleNotes' | 'googleNotes' | 'smartThingsNotes' | 'alexaNotes',
 ) {
     const supported = record[supportKey];
     const notes = record[notesKey];
@@ -564,7 +575,7 @@ const renderFilterDropdown = (enumKey: keyof EnumFilters) => (props: FilterDropd
         },
         {
             label: ({ value }: { value: string }) => formatFilterLabel(enumKey, value),
-        }
+        },
     );
 };
 

@@ -76,6 +76,7 @@ const getLeafGroup = (key: string): LeafGroup => {
 const getCellValue = (row: FlatRow, key: keyof FlatRow): string | number => {
     const map: Record<string, (r: FlatRow) => string | number> = {
         deviceSource: (r) => r.deviceSource,
+        uiid: (r) => r.uiid,
         deviceModel: (r) => r.deviceModel,
         deviceBrand: (r) => r.deviceBrand || 'N/A',
         deviceCategory: (r) => r.deviceCategory,

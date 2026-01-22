@@ -1,4 +1,5 @@
 export interface DeviceInfo {
+    uiid: number;
     model: string;
     source: string;
     brand: string;
@@ -58,6 +59,7 @@ export interface FlatRow {
     deviceInfoGroupSize: number;
     deviceInfoGroupIndex: number;
 
+    uiid: number;
     deviceModel: string;
     deviceSource: string;
     deviceBrand: string;
