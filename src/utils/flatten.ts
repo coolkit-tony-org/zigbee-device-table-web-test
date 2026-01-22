@@ -38,7 +38,7 @@ export function flattenDevice(device: RawDevice, index: number): FlatRow[] {
             rowId: `${parentId}-${idx}`,
             parentId,
             isGroupHead: idx === 0,
-            uiid: device.deviceInfo.uiid,
+            uiid: String(device.deviceInfo.uiid),
             deviceInfoGroupId: parentId,
             deviceInfoGroupSize: matterDevices.length,
             deviceInfoGroupIndex: idx,

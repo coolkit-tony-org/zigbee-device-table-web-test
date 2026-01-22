@@ -63,6 +63,7 @@ function passEnums(row: FlatRow, enums?: EnumFilters): boolean {
         if (!values || values.length === 0) return false;
         return selected.some((val) => values.includes(val));
     };
+    if (!includes(enums.uiid, String(row.uiid))) return false;
     if (!includes(enums.deviceModel, row.deviceModel)) return false;
     if (!includes(enums.deviceSource, row.deviceSource)) return false;
     if (!includes(enums.deviceBrand, row.deviceBrand)) return false;
@@ -134,12 +135,28 @@ const api = {
     },
 
     async distinct(input?: Pick<QueryInput, 'q' | 'enums'>): Promise<EnumOptionMap> {
-        const optionFromValue = (map: Map<string, number>): EnumOption[] =>
+        const optionFromValue = (map: Map<string, number>, sorter?: (a: EnumOption, b: EnumOption) => number): EnumOption[] =>
             Array.from(map.entries())
                 .map(([value, count]) => ({ value, count }))
-                .sort((a, b) => b.count - a.count);
+                .sort(sorter ?? ((a, b) => b.count - a.count));
 
-        const collect = (data: FlatRow[], getter: (row: FlatRow) => string | boolean | undefined) => {
+        const sortByNumberAsc = (a: EnumOption, b: EnumOption) => {
+            const an = Number(a.value);
+            const bn = Number(b.value);
+            const aNaN = Number.isNaN(an);
+            const bNaN = Number.isNaN(bn);
+            if (aNaN && bNaN) return a.value.localeCompare(b.value);
+            if (aNaN) return 1;
+            if (bNaN) return -1;
+            if (an !== bn) return an - bn;
+            return b.count - a.count;
+        };
+
+        const collect = (
+            data: FlatRow[],
+            getter: (row: FlatRow) => string | boolean | undefined,
+            sorter?: (a: EnumOption, b: EnumOption) => number,
+        ) => {
             const counter = new Map<string, number>();
             data.forEach((row) => {
                 const value = getter(row);
@@ -147,7 +164,7 @@ const api = {
                 const key = String(value);
                 counter.set(key, (counter.get(key) ?? 0) + 1);
             });
-            return optionFromValue(counter);
+            return optionFromValue(counter, sorter);
         };
 
         const collectArray = (data: FlatRow[], getter: (row: FlatRow) => string[]) => {
@@ -174,6 +191,7 @@ const api = {
         };
 
         return {
+            uiid: collect(byOtherFilters('uiid'), (row) => row.uiid, sortByNumberAsc),
             deviceModel: collect(byOtherFilters('deviceModel'), (row) => row.deviceModel),
             deviceSource: collect(byOtherFilters('deviceSource'), (row) => row.deviceSource),
             deviceBrand: collect(byOtherFilters('deviceBrand'), (row) => row.deviceBrand),

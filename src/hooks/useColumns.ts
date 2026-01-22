@@ -130,6 +130,7 @@ const createDefaultEnums = (): EnumFilters => ({
 const enums = ref<EnumFilters>(createDefaultEnums());
 
 const enumOptions = ref<EnumOptionMap>({
+    uiid: [],
     deviceModel: [],
     deviceSource: [],
     deviceBrand: [],

@@ -43,7 +43,7 @@ export interface RawDevice {
 }
 
 export type RawData = {
-    supportDevices: RawDevice[],
+    supportDevices: RawDevice[];
     updateTime: number;
 };
 
@@ -59,7 +59,7 @@ export interface FlatRow {
     deviceInfoGroupSize: number;
     deviceInfoGroupIndex: number;
 
-    uiid: number;
+    uiid: string;
     deviceModel: string;
     deviceSource: string;
     deviceBrand: string;
@@ -88,6 +88,7 @@ export interface FlatRow {
 
 /** 表格中勾选好的筛选内容 */
 export type EnumFilters = Partial<{
+    uiid: string[];
     deviceModel: string[];
     deviceSource: string[];
     deviceBrand: string[];
@@ -120,6 +121,7 @@ export type ExportColumn = {
 
 /** 每一列的筛选具体可筛选内容 */
 export type EnumOptionMap = {
+    uiid: EnumOption[];
     deviceModel: EnumOption[];
     deviceSource: EnumOption[];
     deviceBrand: EnumOption[];
