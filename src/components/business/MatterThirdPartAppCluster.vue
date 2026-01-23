@@ -51,19 +51,6 @@ const hasNotes = computed(() => {
         margin-right: 4px;
     }
 }
-
-.li {
-    &::before {
-        display: inline-block;
-        content: '';
-        width: 4px;
-        height: 4px;
-        border-radius: 2px;
-        margin-right: 6px;
-        margin-bottom: 3px;
-        background-color: #333333;
-    }
-}
 </style>
 <style>
 .ant-popover-inner {

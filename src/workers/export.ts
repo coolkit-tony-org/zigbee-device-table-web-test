@@ -85,10 +85,10 @@ const getCellValue = (row: FlatRow, key: keyof FlatRow): string | number => {
         matterDeviceType: (r) => r.matterDeviceType ?? 'No corresponding Matter device type',
         matterSupportedClusters: (r) => clusterLabel(r.matterSupportedClusters, r.matterUnsupportedClusters),
         matterProtocolVersion: (r) => r.matterProtocolVersion || 'No corresponding Matter device type',
-        appleSupported: (r) => thirdAppMatterBridgeLabel(r, 'appleSupported'),
-        googleSupported: (r) => thirdAppMatterBridgeLabel(r, 'googleSupported'),
-        smartThingsSupported: (r) => thirdAppMatterBridgeLabel(r, 'smartThingsSupported'),
-        alexaSupported: (r) => thirdAppMatterBridgeLabel(r, 'alexaSupported'),
+        appleSupported: (r) => thirdAppMatterBridgeLabel(r, 'appleSupported', 'appleNotes'),
+        googleSupported: (r) => thirdAppMatterBridgeLabel(r, 'googleSupported', 'googleNotes'),
+        smartThingsSupported: (r) => thirdAppMatterBridgeLabel(r, 'smartThingsSupported', 'smartThingsNotes'),
+        alexaSupported: (r) => thirdAppMatterBridgeLabel(r, 'alexaSupported', 'alexaNotes'),
         homeAssistantSupported: (r) => (r.homeAssistantSupported ? '√' : '×'),
         homeAssistantEntities: (r) => entitiesLabel(r.homeAssistantEntities),
     };
@@ -224,12 +224,17 @@ const clusterLabel = (supported: string[], unsupported: string[]) => {
         : `${supported.map((item) => `√${item}`).join('\n')}\n${unsupported.map((item) => `×${item}`).join('\n')}`;
 };
 
-const thirdAppMatterBridgeLabel = (row: FlatRow, supportKey: 'appleSupported' | 'googleSupported' | 'smartThingsSupported' | 'alexaSupported') => {
+const thirdAppMatterBridgeLabel = (
+    row: FlatRow,
+    supportKey: 'appleSupported' | 'googleSupported' | 'smartThingsSupported' | 'alexaSupported',
+    notesKey: 'appleNotes' | 'googleNotes' | 'smartThingsNotes' | 'alexaNotes',
+) => {
     const supported = row[supportKey];
+    const notes = row[notesKey];
     const isThirdAppEmpty = !supported.length;
     const { matterDeviceType } = row;
 
     if (isThirdAppEmpty && matterDeviceType) return 'Bridge not yet adapted to this device';
     if (isThirdAppEmpty && !matterDeviceType) return 'No corresponding Matter device type';
-    return supported.join('\n');
+    return `${supported.join('\n')}\n\n${notes.join('\n')}`;
 };
