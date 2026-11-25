@@ -1,5 +1,5 @@
 {
-    "updateTime": 1791777418461,
+    "updateTime": 1795574784601,
     "supportDevices": [
         {
             "deviceInfo": {
@@ -7106,7 +7106,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -8688,7 +8689,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -9456,7 +9458,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -11117,7 +11120,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -11530,7 +11534,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -11719,7 +11724,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -12099,7 +12105,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -12286,7 +12293,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -12473,7 +12481,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -12663,7 +12672,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -17283,7 +17293,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -17420,7 +17431,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -17719,7 +17731,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -19566,7 +19579,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -19698,7 +19712,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -19830,7 +19845,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -19962,7 +19978,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -22117,7 +22134,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -26392,7 +26410,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -26588,7 +26607,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -31592,7 +31612,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -32856,7 +32877,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -33500,7 +33522,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -34977,7 +35000,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -38337,7 +38361,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -38419,7 +38444,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -38501,7 +38527,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -38637,7 +38664,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -38719,7 +38747,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -38801,7 +38830,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -38883,7 +38913,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -38965,7 +38996,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -39047,7 +39079,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -39129,7 +39162,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -39211,7 +39245,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -39925,7 +39960,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -41845,7 +41881,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -41977,7 +42014,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -42109,7 +42147,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -42241,7 +42280,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -42426,7 +42466,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -42507,7 +42548,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -42986,7 +43028,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -43205,7 +43248,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -47602,7 +47646,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -47874,7 +47919,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -51309,7 +51355,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -52483,7 +52530,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -52705,7 +52753,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -54393,7 +54442,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -55087,7 +55137,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -56780,7 +56831,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -57029,7 +57081,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -57110,7 +57163,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -57191,7 +57245,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -57494,7 +57549,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -57627,7 +57683,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -58384,7 +58441,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -58519,7 +58577,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -58654,7 +58713,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -59174,7 +59234,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -59311,7 +59372,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -59448,7 +59510,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -59585,7 +59648,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -59722,7 +59786,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -59938,7 +60003,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -69505,7 +69571,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -73747,7 +73814,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -74216,7 +74284,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -74351,7 +74420,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -74762,7 +74832,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -82124,7 +82195,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -82313,7 +82385,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -84901,7 +84974,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -85310,7 +85384,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -87257,14 +87332,15 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
                 "isSupported": true,
                 "entities": [
                     "Switch (with state on/off)",
-                    "Select"
+                    "Select * 2"
                 ]
             },
             "matterBridge": {
@@ -87338,14 +87414,15 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
                 "isSupported": true,
                 "entities": [
                     "Switch (with state on/off)",
-                    "Select"
+                    "Select * 2"
                 ]
             },
             "matterBridge": {
@@ -90713,7 +90790,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -92511,7 +92589,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -92646,7 +92725,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -92975,7 +93055,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -93190,7 +93271,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -97175,7 +97257,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -97310,7 +97393,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -103423,7 +103507,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -103558,7 +103643,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -104738,7 +104824,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -110661,7 +110748,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -110845,7 +110933,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -111593,7 +111682,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -112047,7 +112137,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -112180,7 +112271,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -349662,7 +349754,7 @@
                     "Cover",
                     "Select * 3",
                     "Sensor * 4",
-                    "Switch (with state on/off)"
+                    "Switch (with state on/off) * 2"
                 ]
             },
             "matterBridge": {
@@ -481087,6 +481179,109 @@
         },
         {
             "deviceInfo": {
+                "model": "TRV-ZBL",
+                "source": "Zigbee Devices",
+                "brand": "SONOFF",
+                "category": "Thermostat"
+            },
+            "ewelinkCloud": {
+                "isSupported": true,
+                "capabilities": [
+                    "battery",
+                    "thermostat-target-setpoint/auto-mode",
+                    "thermostat-target-setpoint/eco-mode",
+                    "thermostat-target-setpoint/manual-mode",
+                    "thermostat/adaptive-recovery-status",
+                    "thermostat/thermostat-mode",
+                    "temperature",
+                    "child-lock",
+                    "window-detection",
+                    "fault",
+                    "ota",
+                    "rssi",
+                    "lqi"
+                ]
+            },
+            "homeAssistant": {
+                "isSupported": true,
+                "entities": [
+                    "Number (with deviceClass temperature_delta)",
+                    "Sensor (with deviceClass temperature)",
+                    "Climate",
+                    "Sensor (with deviceClass battery)",
+                    "Sensor * 13",
+                    "Switch (with state on/off) * 4",
+                    "Number * 14",
+                    "Select * 2",
+                    "Text * 21",
+                    "Binary sensor"
+                ]
+            },
+            "matterBridge": {
+                "isSupported": true,
+                "devices": [
+                    {
+                        "deviceType": "Thermostat",
+                        "protocolVersion": "1.5.0",
+                        "supportedClusters": [
+                            "Bridged Device Basic Information",
+                            "Descriptor",
+                            "Groups",
+                            "Identify",
+                            "Power Source",
+                            "Scenes Management",
+                            "Thermostat"
+                        ],
+                        "thirdPartyAppSupport": [
+                            {
+                                "appName": "Apple Home App",
+                                "notes": [
+                                    "1. For battery-powered devices, the displayed battery level may vary slightly (0.1–0.5) across platforms due to platform-specific value handling.",
+                                    "2. Temperature conversion differences across platforms may cause slight variations in the displayed value (around 0.1°C / 0.1°F)."
+                                ],
+                                "supportedClusters": [
+                                    "Thermostat"
+                                ]
+                            },
+                            {
+                                "appName": "Google Home App",
+                                "notes": [
+                                    "Temperature conversion differences across platforms may cause slight variations in the displayed value (around 0.1°C / 0.1°F)."
+                                ],
+                                "supportedClusters": [
+                                    "Thermostat"
+                                ]
+                            },
+                            {
+                                "appName": "SmartThings App",
+                                "notes": [
+                                    "For battery-powered devices, the displayed battery level may vary slightly (0.1–0.5) across platforms due to platform-specific value handling."
+                                ],
+                                "supportedClusters": [
+                                    "Thermostat"
+                                ]
+                            },
+                            {
+                                "appName": "Amazon Alexa",
+                                "notes": [
+                                    "1. Temperature conversion differences across platforms may cause slight variations in the displayed value (around 0.1°C / 0.1°F).",
+                                    "2. Battery level for battery-powered devices is not available in Alexa."
+                                ],
+                                "supportedClusters": [
+                                    "Thermostat"
+                                ]
+                            }
+                        ],
+                        "unsupportedClusters": [
+                            "Energy Preference",
+                            "Thermostat User Interface Configuration"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "deviceInfo": {
                 "model": "TRVZB",
                 "source": "Zigbee Devices",
                 "brand": "SONOFF",
@@ -518198,7 +518393,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -518285,7 +518481,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -519599,7 +519796,8 @@
                     "rssi",
                     "lqi",
                     "startup",
-                    "ota"
+                    "ota",
+                    "switch-mode"
                 ]
             },
             "homeAssistant": {
@@ -575207,85 +575405,6 @@
         },
         {
             "deviceInfo": {
-                "model": "CK-ESP32D0-T5-01(211)",
-                "source": "eWeLink Devices",
-                "brand": "coolkit",
-                "category": "Switch"
-            },
-            "ewelinkCloud": {
-                "isSupported": true,
-                "capabilities": [
-                    "toggle/1",
-                    "toggle/2",
-                    "toggle/3",
-                    "rssi"
-                ]
-            },
-            "homeAssistant": {
-                "isSupported": false,
-                "entities": []
-            },
-            "matterBridge": {
-                "isSupported": true,
-                "devices": [
-                    {
-                        "deviceType": "On/Off Plug-in Unit * 3",
-                        "protocolVersion": "1.5.0",
-                        "supportedClusters": [
-                            "Bridged Device Basic Information",
-                            "Descriptor",
-                            "Fixed Label",
-                            "Groups",
-                            "Identify",
-                            "On/Off",
-                            "Scenes Management",
-                            "User Label"
-                        ],
-                        "thirdPartyAppSupport": [
-                            {
-                                "appName": "Apple Home App",
-                                "notes": [],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "Google Home App",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in Google Home app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "SmartThings App",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in SmartThings app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "Amazon Alexa",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in Alexa app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            }
-                        ],
-                        "unsupportedClusters": [
-                            "Level Control"
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            "deviceInfo": {
                 "model": "CK-ESP32D0-T5-01(212)",
                 "source": "eWeLink Devices",
                 "brand": "coolkit",
@@ -597662,85 +597781,6 @@
         },
         {
             "deviceInfo": {
-                "model": "T5-3C-86",
-                "source": "eWeLink Devices",
-                "brand": "SONOFF",
-                "category": "Switch"
-            },
-            "ewelinkCloud": {
-                "isSupported": true,
-                "capabilities": [
-                    "toggle/1",
-                    "toggle/2",
-                    "toggle/3",
-                    "rssi"
-                ]
-            },
-            "homeAssistant": {
-                "isSupported": false,
-                "entities": []
-            },
-            "matterBridge": {
-                "isSupported": true,
-                "devices": [
-                    {
-                        "deviceType": "On/Off Plug-in Unit * 3",
-                        "protocolVersion": "1.5.0",
-                        "supportedClusters": [
-                            "Bridged Device Basic Information",
-                            "Descriptor",
-                            "Fixed Label",
-                            "Groups",
-                            "Identify",
-                            "On/Off",
-                            "Scenes Management",
-                            "User Label"
-                        ],
-                        "thirdPartyAppSupport": [
-                            {
-                                "appName": "Apple Home App",
-                                "notes": [],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "Google Home App",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in Google Home app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "SmartThings App",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in SmartThings app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "Amazon Alexa",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in Alexa app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            }
-                        ],
-                        "unsupportedClusters": [
-                            "Level Control"
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            "deviceInfo": {
                 "model": "T5-4C-86",
                 "source": "eWeLink Devices",
                 "brand": "SONOFF",
@@ -598040,164 +598080,6 @@
                                 ],
                                 "supportedClusters": [
                                     "On/Off * 2"
-                                ]
-                            }
-                        ],
-                        "unsupportedClusters": [
-                            "Level Control"
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            "deviceInfo": {
-                "model": "T5-3C-120",
-                "source": "eWeLink Devices",
-                "brand": "SONOFF",
-                "category": "Switch"
-            },
-            "ewelinkCloud": {
-                "isSupported": true,
-                "capabilities": [
-                    "toggle/1",
-                    "toggle/2",
-                    "toggle/3",
-                    "rssi"
-                ]
-            },
-            "homeAssistant": {
-                "isSupported": false,
-                "entities": []
-            },
-            "matterBridge": {
-                "isSupported": true,
-                "devices": [
-                    {
-                        "deviceType": "On/Off Plug-in Unit * 3",
-                        "protocolVersion": "1.5.0",
-                        "supportedClusters": [
-                            "Bridged Device Basic Information",
-                            "Descriptor",
-                            "Fixed Label",
-                            "Groups",
-                            "Identify",
-                            "On/Off",
-                            "Scenes Management",
-                            "User Label"
-                        ],
-                        "thirdPartyAppSupport": [
-                            {
-                                "appName": "Apple Home App",
-                                "notes": [],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "Google Home App",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in Google Home app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "SmartThings App",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in SmartThings app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "Amazon Alexa",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in Alexa app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            }
-                        ],
-                        "unsupportedClusters": [
-                            "Level Control"
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            "deviceInfo": {
-                "model": "T5-3C-80",
-                "source": "eWeLink Devices",
-                "brand": "SONOFF",
-                "category": "Switch"
-            },
-            "ewelinkCloud": {
-                "isSupported": true,
-                "capabilities": [
-                    "toggle/1",
-                    "toggle/2",
-                    "toggle/3",
-                    "rssi"
-                ]
-            },
-            "homeAssistant": {
-                "isSupported": false,
-                "entities": []
-            },
-            "matterBridge": {
-                "isSupported": true,
-                "devices": [
-                    {
-                        "deviceType": "On/Off Plug-in Unit * 3",
-                        "protocolVersion": "1.5.0",
-                        "supportedClusters": [
-                            "Bridged Device Basic Information",
-                            "Descriptor",
-                            "Fixed Label",
-                            "Groups",
-                            "Identify",
-                            "On/Off",
-                            "Scenes Management",
-                            "User Label"
-                        ],
-                        "thirdPartyAppSupport": [
-                            {
-                                "appName": "Apple Home App",
-                                "notes": [],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "Google Home App",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in Google Home app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "SmartThings App",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in SmartThings app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
-                                ]
-                            },
-                            {
-                                "appName": "Amazon Alexa",
-                                "notes": [
-                                    "Multi-channel devices are displayed as separate devices in Alexa app."
-                                ],
-                                "supportedClusters": [
-                                    "On/Off * 3"
                                 ]
                             }
                         ],
@@ -706700,6 +706582,111 @@
         },
         {
             "deviceInfo": {
+                "model": "CK-ESP32D0-T5-01(211)",
+                "source": "eWeLink Devices",
+                "brand": "coolkit",
+                "category": "Curtain"
+            },
+            "ewelinkCloud": {
+                "isSupported": true,
+                "capabilities": [
+                    "percentage",
+                    "motor-control",
+                    "rssi"
+                ]
+            },
+            "homeAssistant": {
+                "isSupported": false,
+                "entities": []
+            },
+            "matterBridge": {
+                "isSupported": true,
+                "devices": [
+                    {
+                        "deviceType": "Window Covering",
+                        "protocolVersion": "1.5.0",
+                        "supportedClusters": [
+                            "Bridged Device Basic Information",
+                            "Descriptor",
+                            "Groups",
+                            "Identify",
+                            "Scenes Management",
+                            "Window Covering"
+                        ],
+                        "thirdPartyAppSupport": [
+                            {
+                                "appName": "Apple Home App",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Apple Home.",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• Fully open and fully close commands work normally.",
+                                    "• When fully opened, the status in Apple Home may remain stuck on \"Opening…\".",
+                                    "No error message is shown, and the status does not revert automatically.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Apple Home app.",
+                                    "4. When calibrated, the status may remain stuck on \"Opening…\" or \"Closing…\" if percentage values do not align exactly.",
+                                    "5. If ZBBridge-U was offline while the window covering was adjusted, the percentage may not update automatically after it reconnects, but control continues to work."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "Google Home App",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Google Home.",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• The device responds to Fully Open and Fully Close commands, but not to intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Google Home app.",
+                                    "4. Percentage adjustments made in eWeLink (e.g., for SONOFF DualR3 / DualR3 Lite) may not update automatically in Google Home app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "SmartThings App",
+                                "notes": [
+                                    "1. When fully closed and uncalibrated, the tile may continue to display \"Opening…\", and the tile switch may not respond (control from the device control page still works).",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• The percentage value displays as the default 0%.",
+                                    "• The device does not respond to any percentage controls, including Fully Open, Fully Close, or intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "• The percentage value remains 0% when re-entering the control page.",
+                                    "3. When uncalibrated, pressing \"Pause\" stops movement but may return the window covering to its previous final position.",
+                                    "For example, pausing while closing returns it to Fully Open, and pausing while opening returns it to Fully Closed.",
+                                    "4. When not calibrated, adjustments made with the remote controller may not update in SmartThings app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "Amazon Alexa",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Alexa.",
+                                    "2. When travel calibration is not completed, percentage behavior may be as follows:",
+                                    "• The percentage value displays as the default 100%, and adjusting to any percentage keeps the UI at 100%.",
+                                    "• The device responds to Fully Open and Fully Close commands, but not to intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "• The percentage value remains 100% when re-entering the control page.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Alexa app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            }
+                        ],
+                        "unsupportedClusters": [
+                            "Closure Control",
+                            "Closure Dimension"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "deviceInfo": {
                 "model": "YS-MT750",
                 "source": "eWeLink Devices",
                 "brand": "Emlux",
@@ -707560,6 +707547,321 @@
                     "motor-control",
                     "motor-reverse",
                     "motor-clb",
+                    "rssi"
+                ]
+            },
+            "homeAssistant": {
+                "isSupported": false,
+                "entities": []
+            },
+            "matterBridge": {
+                "isSupported": true,
+                "devices": [
+                    {
+                        "deviceType": "Window Covering",
+                        "protocolVersion": "1.5.0",
+                        "supportedClusters": [
+                            "Bridged Device Basic Information",
+                            "Descriptor",
+                            "Groups",
+                            "Identify",
+                            "Scenes Management",
+                            "Window Covering"
+                        ],
+                        "thirdPartyAppSupport": [
+                            {
+                                "appName": "Apple Home App",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Apple Home.",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• Fully open and fully close commands work normally.",
+                                    "• When fully opened, the status in Apple Home may remain stuck on \"Opening…\".",
+                                    "No error message is shown, and the status does not revert automatically.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Apple Home app.",
+                                    "4. When calibrated, the status may remain stuck on \"Opening…\" or \"Closing…\" if percentage values do not align exactly.",
+                                    "5. If ZBBridge-U was offline while the window covering was adjusted, the percentage may not update automatically after it reconnects, but control continues to work."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "Google Home App",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Google Home.",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• The device responds to Fully Open and Fully Close commands, but not to intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Google Home app.",
+                                    "4. Percentage adjustments made in eWeLink (e.g., for SONOFF DualR3 / DualR3 Lite) may not update automatically in Google Home app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "SmartThings App",
+                                "notes": [
+                                    "1. When fully closed and uncalibrated, the tile may continue to display \"Opening…\", and the tile switch may not respond (control from the device control page still works).",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• The percentage value displays as the default 0%.",
+                                    "• The device does not respond to any percentage controls, including Fully Open, Fully Close, or intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "• The percentage value remains 0% when re-entering the control page.",
+                                    "3. When uncalibrated, pressing \"Pause\" stops movement but may return the window covering to its previous final position.",
+                                    "For example, pausing while closing returns it to Fully Open, and pausing while opening returns it to Fully Closed.",
+                                    "4. When not calibrated, adjustments made with the remote controller may not update in SmartThings app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "Amazon Alexa",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Alexa.",
+                                    "2. When travel calibration is not completed, percentage behavior may be as follows:",
+                                    "• The percentage value displays as the default 100%, and adjusting to any percentage keeps the UI at 100%.",
+                                    "• The device responds to Fully Open and Fully Close commands, but not to intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "• The percentage value remains 100% when re-entering the control page.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Alexa app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            }
+                        ],
+                        "unsupportedClusters": [
+                            "Closure Control",
+                            "Closure Dimension"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "deviceInfo": {
+                "model": "T5-3C-86",
+                "source": "eWeLink Devices",
+                "brand": "SONOFF",
+                "category": "Curtain"
+            },
+            "ewelinkCloud": {
+                "isSupported": true,
+                "capabilities": [
+                    "percentage",
+                    "motor-control",
+                    "rssi"
+                ]
+            },
+            "homeAssistant": {
+                "isSupported": false,
+                "entities": []
+            },
+            "matterBridge": {
+                "isSupported": true,
+                "devices": [
+                    {
+                        "deviceType": "Window Covering",
+                        "protocolVersion": "1.5.0",
+                        "supportedClusters": [
+                            "Bridged Device Basic Information",
+                            "Descriptor",
+                            "Groups",
+                            "Identify",
+                            "Scenes Management",
+                            "Window Covering"
+                        ],
+                        "thirdPartyAppSupport": [
+                            {
+                                "appName": "Apple Home App",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Apple Home.",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• Fully open and fully close commands work normally.",
+                                    "• When fully opened, the status in Apple Home may remain stuck on \"Opening…\".",
+                                    "No error message is shown, and the status does not revert automatically.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Apple Home app.",
+                                    "4. When calibrated, the status may remain stuck on \"Opening…\" or \"Closing…\" if percentage values do not align exactly.",
+                                    "5. If ZBBridge-U was offline while the window covering was adjusted, the percentage may not update automatically after it reconnects, but control continues to work."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "Google Home App",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Google Home.",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• The device responds to Fully Open and Fully Close commands, but not to intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Google Home app.",
+                                    "4. Percentage adjustments made in eWeLink (e.g., for SONOFF DualR3 / DualR3 Lite) may not update automatically in Google Home app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "SmartThings App",
+                                "notes": [
+                                    "1. When fully closed and uncalibrated, the tile may continue to display \"Opening…\", and the tile switch may not respond (control from the device control page still works).",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• The percentage value displays as the default 0%.",
+                                    "• The device does not respond to any percentage controls, including Fully Open, Fully Close, or intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "• The percentage value remains 0% when re-entering the control page.",
+                                    "3. When uncalibrated, pressing \"Pause\" stops movement but may return the window covering to its previous final position.",
+                                    "For example, pausing while closing returns it to Fully Open, and pausing while opening returns it to Fully Closed.",
+                                    "4. When not calibrated, adjustments made with the remote controller may not update in SmartThings app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "Amazon Alexa",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Alexa.",
+                                    "2. When travel calibration is not completed, percentage behavior may be as follows:",
+                                    "• The percentage value displays as the default 100%, and adjusting to any percentage keeps the UI at 100%.",
+                                    "• The device responds to Fully Open and Fully Close commands, but not to intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "• The percentage value remains 100% when re-entering the control page.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Alexa app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            }
+                        ],
+                        "unsupportedClusters": [
+                            "Closure Control",
+                            "Closure Dimension"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "deviceInfo": {
+                "model": "T5-3C-120",
+                "source": "eWeLink Devices",
+                "brand": "SONOFF",
+                "category": "Curtain"
+            },
+            "ewelinkCloud": {
+                "isSupported": true,
+                "capabilities": [
+                    "percentage",
+                    "motor-control",
+                    "rssi"
+                ]
+            },
+            "homeAssistant": {
+                "isSupported": false,
+                "entities": []
+            },
+            "matterBridge": {
+                "isSupported": true,
+                "devices": [
+                    {
+                        "deviceType": "Window Covering",
+                        "protocolVersion": "1.5.0",
+                        "supportedClusters": [
+                            "Bridged Device Basic Information",
+                            "Descriptor",
+                            "Groups",
+                            "Identify",
+                            "Scenes Management",
+                            "Window Covering"
+                        ],
+                        "thirdPartyAppSupport": [
+                            {
+                                "appName": "Apple Home App",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Apple Home.",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• Fully open and fully close commands work normally.",
+                                    "• When fully opened, the status in Apple Home may remain stuck on \"Opening…\".",
+                                    "No error message is shown, and the status does not revert automatically.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Apple Home app.",
+                                    "4. When calibrated, the status may remain stuck on \"Opening…\" or \"Closing…\" if percentage values do not align exactly.",
+                                    "5. If ZBBridge-U was offline while the window covering was adjusted, the percentage may not update automatically after it reconnects, but control continues to work."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "Google Home App",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Google Home.",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• The device responds to Fully Open and Fully Close commands, but not to intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Google Home app.",
+                                    "4. Percentage adjustments made in eWeLink (e.g., for SONOFF DualR3 / DualR3 Lite) may not update automatically in Google Home app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "SmartThings App",
+                                "notes": [
+                                    "1. When fully closed and uncalibrated, the tile may continue to display \"Opening…\", and the tile switch may not respond (control from the device control page still works).",
+                                    "2. When travel calibration is not completed, percentage adjustments may behave as follows:",
+                                    "• The percentage value displays as the default 0%.",
+                                    "• The device does not respond to any percentage controls, including Fully Open, Fully Close, or intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "• The percentage value remains 0% when re-entering the control page.",
+                                    "3. When uncalibrated, pressing \"Pause\" stops movement but may return the window covering to its previous final position.",
+                                    "For example, pausing while closing returns it to Fully Open, and pausing while opening returns it to Fully Closed.",
+                                    "4. When not calibrated, adjustments made with the remote controller may not update in SmartThings app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            },
+                            {
+                                "appName": "Amazon Alexa",
+                                "notes": [
+                                    "1. The \"Pause\" control is not available in Alexa.",
+                                    "2. When travel calibration is not completed, percentage behavior may be as follows:",
+                                    "• The percentage value displays as the default 100%, and adjusting to any percentage keeps the UI at 100%.",
+                                    "• The device responds to Fully Open and Fully Close commands, but not to intermediate positions.",
+                                    "• No error message is shown, and the status does not revert automatically.",
+                                    "• The percentage value remains 100% when re-entering the control page.",
+                                    "3. When not calibrated, adjustments made with the remote controller may not update in Alexa app."
+                                ],
+                                "supportedClusters": [
+                                    "Window Covering"
+                                ]
+                            }
+                        ],
+                        "unsupportedClusters": [
+                            "Closure Control",
+                            "Closure Dimension"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "deviceInfo": {
+                "model": "T5-3C-80",
+                "source": "eWeLink Devices",
+                "brand": "SONOFF",
+                "category": "Curtain"
+            },
+            "ewelinkCloud": {
+                "isSupported": true,
+                "capabilities": [
+                    "percentage",
+                    "motor-control",
                     "rssi"
                 ]
             },
